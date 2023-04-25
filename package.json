@@ -19,7 +19,7 @@
   },
   "scripts": {
     "heroku-prebuild": "npm install -g serve",
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -46,6 +46,6 @@
     "msw": "^0.35.0"
   },
   "engines" : {
-    "node" : "v16.16.0"
+    "node" : "v16.19.0"
   }
 }

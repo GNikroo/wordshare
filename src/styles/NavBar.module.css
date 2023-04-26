@@ -2,3 +2,12 @@
     background-color: #ebf3fb;
     border: 1px solid #dee6ee;
 }
+
+.Brand {
+    font-weight: 500;
+}
+
+.Active {
+    text-decoration: none;
+    color: #e56b6f;
+}

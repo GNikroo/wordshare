@@ -1,7 +1,7 @@
 .Button {
-    background-color: #264653;
+    background-color: #d99773;
     color: whitesmoke;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: bold;
     align-self: center;
     border-color: transparent;
@@ -12,21 +12,22 @@
 }
 
 .Button:hover {
-    background-color: #2a9d8f !important;
+    background-color: #eaac8b !important;
     color: whitesmoke;
     border-color: transparent;
     cursor: pointer;
 }
 
 .Button:hover:active {
-    background-color: #2a9d8f !important;
+    background-color: #eaac8b !important;
 }
 
 .Button:active {
-    background-color: #2a9d8f !important;
+    background-color: #eaac8b !important;
+    color: #c16b7d;
 }
 
 .Button:focus {
-    background-color: #2a9d8f;
+    background-color: #eaac8b;
     border-color: transparent;
 }

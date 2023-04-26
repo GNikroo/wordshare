@@ -5,37 +5,29 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .Card {
     max-height: 45rem;
-    text-align: center;
+    display: inline-block;
     padding: 2.5rem;
     background-color: inherit;
     border: none;
-    max-width: 40rem;
+    min-width: 18rem;
+    width: 75%;
     font-size: 14px;
     position: relative;
 }
 
 .Body {
-    /* padding: 1.5rem; */
     border-radius: 10px;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-}
-
-.Input {
-    background: #ffffff;
-    border: 1px solid #f0f1f9;
-    box-sizing: border-box;
-    border-radius: 2px;
-    color: #7177a1;
-    text-align: center;
-    padding: 10px;
+    box-shadow: rgba(109, 89, 122, 0.5) 0px 34px 48px 0px;
 }
 
 .Title {
-    color: #f4a261;
+    color: #dd6266;
+    padding-top: 1rem;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
@@ -46,6 +38,7 @@
 
 .Text {
     margin: 0;
+    padding-bottom: 1rem;
     font-size: 16px;
     text-align: center;
     line-height: 19px;
@@ -61,5 +54,5 @@
 
 .Link span {
     font-weight: bold;
-    color: #258277;
+    color: #e56b6f;
 }

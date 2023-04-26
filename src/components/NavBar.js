@@ -13,7 +13,7 @@ const NavBar = () => {
         >
             <Container>
                 <NavLink to='/'>
-                    <Navbar.Brand>
+                    <Navbar.Brand className={styles.Brand}>
                         Word
                         <img
                             src={logo}

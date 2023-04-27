@@ -1,13 +1,17 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+
+import { Alert, Button, Card, Container, Form } from 'react-bootstrap';
+
 import { Link, useHistory } from 'react-router-dom';
 
+import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
 import btnStyles from '../../styles/Button.module.css';
 import styles from '../../styles/SignInUpForm.module.css';
 
-import axios from 'axios';
-import { Alert, Button, Card, Container, Form } from 'react-bootstrap';
+function SignInForm() {
+    const setCurrentUser = useSetCurrentUser();
 
-const SignInForm = () => {
     const [signInData, setSignInData] = useState({
         username: '',
         password: '',
@@ -28,7 +32,11 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post('/dj-rest-auth/login/', signInData);
+            const { data } = await axios.post(
+                '/dj-rest-auth/login/',
+                signInData
+            );
+            setCurrentUser(data.user);
             history.push('/');
         } catch (err) {
             setErrors(err.response?.data);
@@ -108,6 +116,6 @@ const SignInForm = () => {
             </Card>
         </Container>
     );
-};
+}
 
 export default SignInForm;

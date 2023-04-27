@@ -7,21 +7,20 @@ import styles from '../../styles/SignInUpForm.module.css';
 import axios from 'axios';
 import { Alert, Button, Card, Container, Form } from 'react-bootstrap';
 
-const SignUpForm = () => {
-    const [signUpData, setSignUpData] = useState({
+const SignInForm = () => {
+    const [signInData, setSignInData] = useState({
         username: '',
-        password1: '',
-        password2: '',
+        password: '',
     });
-    const { username, password1, password2 } = signUpData;
+    const { username, password } = signInData;
 
     const [errors, setErrors] = useState({});
 
     const history = useHistory();
 
     const handleChange = (event) => {
-        setSignUpData({
-            ...signUpData,
+        setSignInData({
+            ...signInData,
             [event.target.name]: event.target.value,
         });
     };
@@ -29,8 +28,8 @@ const SignUpForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post('/dj-rest-auth/registration/', signUpData);
-            history.push('/signin');
+            await axios.post('/dj-rest-auth/login/', signInData);
+            history.push('/');
         } catch (err) {
             setErrors(err.response?.data);
         }
@@ -40,8 +39,7 @@ const SignUpForm = () => {
         <Container className={styles.Container}>
             <Card className={`${styles.Card} my-auto p-md-2`}>
                 <Card.Body className={`${styles.Body} p-xs-4`}>
-                    <h1 className={styles.Title}>sign up</h1>
-                    <p className={styles.Text}>and start sharing your ideas!</p>
+                    <h1 className={styles.Title}>sign in</h1>
                     <Form
                         className={styles.Form}
                         onSubmit={handleSubmit}
@@ -65,37 +63,18 @@ const SignUpForm = () => {
                                 {message}
                             </Alert>
                         ))}
-                        <Form.Group controlId='password1'>
+                        <Form.Group controlId='password'>
                             <Form.Label className='float-left font-weight-bold'>
                                 Password
                             </Form.Label>
                             <Form.Control
                                 type='password'
-                                name='password1'
-                                value={password1}
+                                name='password'
+                                value={password}
                                 onChange={handleChange}
                             />
                         </Form.Group>
-                        {errors.password1?.map((message, idx) => (
-                            <Alert
-                                variant='warning'
-                                key={idx}
-                            >
-                                {message}
-                            </Alert>
-                        ))}
-                        <Form.Group controlId='password2'>
-                            <Form.Label className='float-left font-weight-bold'>
-                                Confirm password
-                            </Form.Label>
-                            <Form.Control
-                                type='password'
-                                name='password2'
-                                value={password2}
-                                onChange={handleChange}
-                            />
-                        </Form.Group>
-                        {errors.password2?.map((message, idx) => (
+                        {errors.password?.map((message, idx) => (
                             <Alert
                                 variant='warning'
                                 key={idx}
@@ -107,7 +86,7 @@ const SignUpForm = () => {
                             className={`${btnStyles.Button} btn-outline-light`}
                             type='submit'
                         >
-                            Sign up!
+                            Sign in!
                         </Button>
                         {errors.non_field_errors?.map((message, idx) => (
                             <Alert
@@ -121,9 +100,9 @@ const SignUpForm = () => {
                     </Form>
                     <Link
                         className={styles.Link}
-                        to='/signin'
+                        to='/signup'
                     >
-                        Have an account? <span>Sign in</span>
+                        Don't have an account? <span>Sign up</span>
                     </Link>
                 </Card.Body>
             </Card>
@@ -131,4 +110,4 @@ const SignUpForm = () => {
     );
 };
 
-export default SignUpForm;
+export default SignInForm;

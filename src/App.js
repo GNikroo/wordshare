@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import styles from './App.module.css';
 import './api/axiosDefaults';
 import NavBar from './components/NavBar';
+import SignInForm from './pages/auth/SignInForm';
 import SignUpForm from './pages/auth/SignUpForm';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
                     <Route
                         exact
                         path='/signin'
-                        render={() => <h1>Sign in</h1>}
+                        render={() => <SignInForm />}
                     />
                     <Route
                         exact

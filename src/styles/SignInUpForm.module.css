@@ -15,7 +15,7 @@
     background-color: inherit;
     border: none;
     min-width: 18rem;
-    width: 75%;
+    width: 65%;
     font-size: 14px;
     position: relative;
 }
@@ -54,5 +54,5 @@
 
 .Link span {
     font-weight: bold;
-    color: #e56b6f;
+    color: #6d597a;
 }

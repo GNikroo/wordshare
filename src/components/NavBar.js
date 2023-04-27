@@ -23,34 +23,33 @@ const NavBar = () => {
                         Share
                     </Navbar.Brand>
                 </NavLink>
-                <Navbar.Toggle aria-controls='basic-navbar-nav' />
-                <Navbar.Collapse id='basic-navbar-nav'>
-                    <Nav className='ml-auto text-left'>
-                        <NavLink
-                            exact
-                            className={styles.NavLink}
-                            activeClassName={styles.Active}
-                            to='/'
-                        >
-                            <i className='fas fa-home'></i>Home
-                        </NavLink>
-
-                        <NavLink
-                            className={styles.NavLink}
-                            activeClassName={styles.Active}
-                            to='/signin'
-                        >
-                            <i className='fas fa-sign-in-alt'></i>Sign in
-                        </NavLink>
-                        <NavLink
-                            to='/signup'
-                            className={styles.NavLink}
-                            activeClassName={styles.Active}
-                        >
-                            <i className='fas fa-user-plus'></i>Sign up
-                        </NavLink>
-                    </Nav>
-                </Navbar.Collapse>
+                <Nav className={styles.Nav}>
+                    <NavLink
+                        exact
+                        className={styles.NavLink}
+                        activeClassName={styles.Active}
+                        to='/'
+                    >
+                        <i className='d-sm-block d-md-none fas fa-home p-2'></i>
+                        <span className='d-none d-md-block p-2'>Home</span>
+                    </NavLink>
+                    <NavLink
+                        className={styles.NavLink}
+                        activeClassName={styles.Active}
+                        to='/signin'
+                    >
+                        <i className='d-sm-block d-md-none fas fa-sign-in-alt p-2'></i>
+                        <span className='d-none d-md-block p-2'>Sign in</span>
+                    </NavLink>
+                    <NavLink
+                        to='/signup'
+                        className={styles.NavLink}
+                        activeClassName={styles.Active}
+                    >
+                        <i className='d-sm-block d-md-none fas fa-user-plus p-2'></i>
+                        <span className='d-none d-md-block p-2'>Sign up</span>
+                    </NavLink>
+                </Nav>
             </Container>
         </Navbar>
     );

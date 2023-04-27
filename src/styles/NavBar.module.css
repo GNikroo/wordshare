@@ -11,3 +11,15 @@
     text-decoration: none;
     color: #e56b6f;
 }
+
+.NavLink span {
+    font-weight: bold;
+}
+
+.NavLink i {
+    display: inline;
+}
+
+.Nav {
+    flex-direction: unset;
+}

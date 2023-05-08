@@ -29,8 +29,8 @@ const NavBar = () => {
             activeClassName={styles.Active}
             to='/posts/create'
         >
-            <i className='d-sm-block d-md-none p-2 fas fa-plus-square'></i>
-            <span className='d-none d-md-block p-2'>Add post</span>
+            <i className='d-sm-inline p-2 fas fa-plus-square'></i>
+            <span className='d-none d-md-inline p-2'>Create</span>
         </NavLink>
     );
 
@@ -67,7 +67,6 @@ const NavBar = () => {
                 <Avatar
                     src={currentUser?.profile_image}
                     text='Profile'
-                    height={40}
                 />
             </NavLink>
         </>

@@ -54,7 +54,7 @@ function SignInForm() {
                     >
                         <Form.Group controlId='username'>
                             <Form.Label className='float-left font-weight-bold'>
-                                Email address
+                                Username
                             </Form.Label>
                             <Form.Control
                                 type='text'

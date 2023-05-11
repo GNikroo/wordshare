@@ -5,6 +5,7 @@ import './api/axiosDefaults';
 import NavBar from './components/NavBar';
 import SignInForm from './pages/auth/SignInForm';
 import SignUpForm from './pages/auth/SignUpForm';
+import PostCreateForm from './pages/posts/PostCreateForm';
 
 function App() {
     return (
@@ -26,6 +27,11 @@ function App() {
                         exact
                         path='/signup'
                         render={() => <SignUpForm />}
+                    />
+                    <Route
+                        exact
+                        path='/posts/create'
+                        render={() => <PostCreateForm />}
                     />
                     <Route
                         render={() => (

@@ -31,3 +31,34 @@
     background-color: #eaac8b;
     border-color: transparent;
 }
+
+.Submit {
+    background-color: #9c6eb9 !important;
+}
+
+.Submit:hover {
+    background-color: #c099d9 !important;
+    color: whitesmoke;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.Submit:hover:active {
+    background-color: #c099d9 !important;
+}
+
+.Cancel {
+    background-color: #e56b6f !important;
+}
+
+.Cancel:hover {
+    background-color: #ec898c !important;
+    color: whitesmoke;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.Cancel:hover:active {
+    background-color: #ec898c !important;
+}
+

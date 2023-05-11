@@ -23,3 +23,13 @@ a:hover {
     color: #b56576;
     cursor: pointer;
 }
+
+.UploadImg {
+    height: fit-content;
+}
+
+.Image {
+    max-height: 40vh;
+    max-width: 100%;
+    object-fit: contain;
+}

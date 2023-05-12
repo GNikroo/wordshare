@@ -19,7 +19,7 @@
 }
 
 .Button:hover:active {
-    background-color: #eaac8b !important;
+    background-color: #eea6a8 !important;
 }
 
 .Button:active {
@@ -44,7 +44,7 @@
 }
 
 .Submit:hover:active {
-    background-color: #c099d9 !important;
+    background-color: #cfb7de !important;
 }
 
 .Cancel {
@@ -59,6 +59,18 @@
 }
 
 .Cancel:hover:active {
-    background-color: #ec898c !important;
+    background-color: #eea6a8 !important;
 }
 
+.CreateButton {
+    color: #5077a8;
+}
+
+.CreateButton:hover {
+    color: #6c97cb;
+    cursor: pointer;
+}
+
+.CreateButton:hover:active {
+    color: #8dadd4 !important;
+}

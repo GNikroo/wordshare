@@ -8,8 +8,22 @@
 }
 
 .Active {
-    text-decoration: none;
     color: #e56b6f;
+}
+
+.AddPost {
+    color: #915f78 !important;
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+}
+
+.AddPost:hover {
+    color: #b56576 !important;
+}
+
+.AddPost:active {
+    color: #dd93a3 !important;
 }
 
 .NavLink span {
@@ -21,6 +35,7 @@
 }
 
 .Nav {
+    width: max-content;
     align-items: center;
     flex-direction: unset;
 }

@@ -7,7 +7,6 @@ import {
     useCurrentUser,
     useSetCurrentUser,
 } from '../contexts/CurrentUserContext';
-import btnStyles from '../styles/Button.module.css';
 import styles from '../styles/NavBar.module.css';
 
 import Avatar from './Avatar';
@@ -18,12 +17,12 @@ const NavBar = () => {
 
     const addPostIcon = (
         <NavLink
-            activeClassName={styles.Active}
+            className={styles.AddPost}
+            activeClassName={styles.AddPostActive}
             to='/posts/create'
         >
-            <i
-                className={`${btnStyles.CreateButton} p-2 fas fa-plus-square`}
-            ></i>
+            <i className='d-inline p-2 fas fa-plus-square'></i>
+            <span className='d-none d-md-block pr-4'>add post</span>
         </NavLink>
     );
 
@@ -114,10 +113,10 @@ const NavBar = () => {
                                     </Navbar.Brand>
                                 </NavLink>
                             </Col>
-                            <Col>{currentUser && addPostIcon}</Col>
                             <Col></Col>
                             <Col>
                                 <Nav className={styles.Nav}>
+                                    {currentUser && addPostIcon}
                                     <NavLink
                                         exact
                                         className={styles.NavLink}
@@ -125,7 +124,7 @@ const NavBar = () => {
                                         to='/'
                                     >
                                         <i className='d-sm-block d-md-none fas fa-home p-2'></i>
-                                        <span className='d-none d-md-block p-2'>
+                                        <span className='d-none d-md-block p-2 pl-4'>
                                             Home
                                         </span>
                                     </NavLink>

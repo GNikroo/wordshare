@@ -62,15 +62,40 @@
     background-color: #eea6a8 !important;
 }
 
-.CreateButton {
-    color: #5077a8;
+.ImgSubmit {
+    font-size: 0.8rem;
+    color: #9c6eb9 !important;
+    background-color: transparent !important;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.CreateButton:hover {
-    color: #6c97cb;
+.ImgSubmit:hover {
+    background-color: #c099d9 !important;
+    color: whitesmoke !important;
+    border-color: transparent;
     cursor: pointer;
 }
 
-.CreateButton:hover:active {
-    color: #8dadd4 !important;
+.ImgSubmit:hover:active {
+    background-color: #cfb7de !important;
+}
+
+.ImgCancel {
+    font-size: 0.8rem;
+    color: #e56b6f !important;
+    background-color: transparent !important;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.ImgCancel:hover {
+    background-color: #ec898c !important;
+    color: whitesmoke !important;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.ImgCancel:hover:active {
+    background-color: #eea6a8 !important;
 }

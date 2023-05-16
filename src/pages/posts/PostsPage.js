@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
+import { Col, Container, Form, Row } from 'react-bootstrap';
 
 import Asset from '../../components/Asset';
 import Post from './Post';
@@ -76,6 +72,7 @@ function PostsPage({ message, filter = '' }) {
                             <InfiniteScroll
                                 children={posts.results.map((post) => (
                                     <Post
+                                        feed_list={true}
                                         key={post.id}
                                         {...post}
                                         setPosts={setPosts}

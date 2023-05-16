@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import EllipsisText from 'react-ellipsis-text';
 import { Link, useHistory } from 'react-router-dom';
+import appStyles from '../../App.module.css';
 import { axiosRes } from '../../api/axiosDefaults';
 import Avatar from '../../components/Avatar';
 import { MoreDropdown } from '../../components/MoreDropdown';
@@ -19,6 +19,7 @@ const Post = (props) => {
         like_id,
         title,
         content,
+        feed_list,
         updated_at,
         postPage,
         setPosts,
@@ -107,24 +108,29 @@ const Post = (props) => {
             </Card.Body>
             <Link to={`/posts/${id}`}></Link>
             <Card.Body className={`${styles.CardBodyBottom} p-0`}>
-                <Link to={`/posts/${id}`}>
-                    {title && (
-                        <Card.Title className=''>
-                            <EllipsisText
-                                text={title}
-                                length={50}
-                            />
-                        </Card.Title>
-                    )}
-                    {content && (
-                        <Card.Text>
-                            <EllipsisText
-                                text={content}
-                                length={300}
-                            />
-                        </Card.Text>
-                    )}
-                </Link>
+                {feed_list ? (
+                    <Link to={`/posts/${id}`}>
+                        {' '}
+                        <div className={appStyles.Truncated}>
+                            {title && <Card.Title>{title}</Card.Title>}
+                            {content && (
+                                <Card.Text className={appStyles.Ellipses}>
+                                    {content}
+                                </Card.Text>
+                            )}
+                        </div>
+                    </Link>
+                ) : (
+                    <>
+                        {title && <Card.Title>{title}</Card.Title>}
+                        {content && (
+                            <Card.Text className={styles.TextAlignLeft}>
+                                {content}
+                            </Card.Text>
+                        )}
+                    </>
+                )}
+
                 <div className={styles.PostBar}>
                     <span className='pr-1'>
                         {is_owner ? (

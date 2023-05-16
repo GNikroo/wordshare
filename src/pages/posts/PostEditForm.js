@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { axiosReq } from '../../api/axiosDefaults';
+import React, { useEffect, useState } from 'react';
 
-import { Alert } from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -9,10 +8,12 @@ import Form from 'react-bootstrap/Form';
 import appStyles from '../../App.module.css';
 import btnStyles from '../../styles/Button.module.css';
 
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router';
+import { axiosReq } from '../../api/axiosDefaults';
 
-function PostCreateForm() {
+function PostEditForm() {
     const [errors, setErrors] = useState({});
+
     const [postData, setPostData] = useState({
         title: '',
         content: '',
@@ -20,6 +21,22 @@ function PostCreateForm() {
     const { title, content } = postData;
 
     const history = useHistory();
+    const { id } = useParams();
+
+    useEffect(() => {
+        const handleMount = async () => {
+            try {
+                const { data } = await axiosReq.get(`/posts/${id}/`);
+                const { title, content, is_owner } = data;
+
+                is_owner ? setPostData({ title, content }) : history.push('/');
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        handleMount();
+    }, [history, id]);
 
     const handleChange = (event) => {
         setPostData({
@@ -35,13 +52,9 @@ function PostCreateForm() {
         formData.append('title', title);
         formData.append('content', content);
 
-        console.log(formData, 'form data');
-
         try {
-            const { data } = await axiosReq.post('/posts/', formData);
-            console.log(formData, 'form data try catch');
-            history.push(`/posts/${data.id}`);
-            console.log(data, 'data');
+            await axiosReq.put(`/posts/${id}/`, formData);
+            history.push(`/posts/${id}`);
         } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
@@ -91,7 +104,7 @@ function PostCreateForm() {
                 className={`${btnStyles.Button} ${btnStyles.Submit}`}
                 type='submit'
             >
-                create
+                update
             </Button>
             <Button
                 className={`${btnStyles.Button} ${btnStyles.Cancel}`}
@@ -116,4 +129,4 @@ function PostCreateForm() {
     );
 }
 
-export default PostCreateForm;
+export default PostEditForm;

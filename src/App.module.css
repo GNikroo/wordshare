@@ -4,6 +4,7 @@
 
 .App {
     font-family: 'Quicksand', sans-serif;
+    white-space: break-spaces;
     color: #355070;
     background-color: #f8f8f8;
     min-height: 100vh;
@@ -32,4 +33,15 @@ a:hover {
     max-height: 40vh;
     max-width: 100%;
     object-fit: contain;
+}
+
+.Truncated {
+    overflow: hidden;
+}
+
+.Ellipses {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
 }

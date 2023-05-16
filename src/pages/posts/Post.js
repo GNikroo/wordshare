@@ -132,7 +132,7 @@ const Post = (props) => {
                 )}
 
                 <div className={styles.PostBar}>
-                    <span className='pr-1'>
+                    <span className='pr-2'>
                         {is_owner ? (
                             <OverlayTrigger
                                 placement='top'
@@ -142,7 +142,9 @@ const Post = (props) => {
                                     </Tooltip>
                                 }
                             >
-                                <i className='far fa-heart' />
+                                <i
+                                    className={`far fa-heart ${styles.HeartOutline}`}
+                                />
                             </OverlayTrigger>
                         ) : like_id ? (
                             <span onClick={handleUnlike}>
@@ -164,15 +166,15 @@ const Post = (props) => {
                                 <i className='far fa-heart' />
                             </OverlayTrigger>
                         )}
-                        {likes_count}
+                        <span className='pl-1'>{likes_count}</span>
                     </span>
-                    <span className='pl-1'>
+                    <span className='pl-2'>
                         <Link to={`/posts/${id}`}>
                             <i
-                                className={`${styles.Flip} fa-regular fa-comment`}
+                                className={`${styles.Flip} ${styles.Comment} fa-solid fa-comment`}
                             />
                         </Link>
-                        {comments_count}
+                        <span className='pl-1'>{comments_count}</span>
                     </span>
                 </div>
             </Card.Body>

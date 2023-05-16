@@ -1,0 +1,19 @@
+.Form {
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.Button {
+    background-color: #e88c7d;
+    border-radius: 2.5rem;
+    border: none;
+    color: whitesmoke;
+    margin: 5px;
+}
+
+.Button:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: #e88c7d;
+}

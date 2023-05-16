@@ -8,15 +8,15 @@
 }
 
 .Heart {
-    color: #e56b6f;
+    color: #d93e26;
 }
 
-.Heart:hover {
-    color: #915f78;
+.HeartOutline {
+    color: #d93e26;
 }
 
-.HeartOutline:hover {
-    color: #e56b6f;
+.Comment {
+    color: #ea9386;
 }
 
 .Date {
@@ -44,4 +44,8 @@
 
 .Flip {
     transform: scale(-1, 1);
+}
+
+.TextAlignLeft {
+    text-align: left;
 }

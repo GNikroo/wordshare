@@ -15,11 +15,11 @@
 }
 
 .Active {
-    color: #e56b6f;
+    color: #915f78;
 }
 
 .AddPost {
-    color: #915f78 !important;
+    color: #e77c76 !important;
     align-items: center;
     display: flex;
     font-weight: bold;

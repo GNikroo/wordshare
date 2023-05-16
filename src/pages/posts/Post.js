@@ -107,24 +107,24 @@ const Post = (props) => {
             </Card.Body>
             <Link to={`/posts/${id}`}></Link>
             <Card.Body className={`${styles.CardBodyBottom} p-0`}>
-                {title && (
-                    <Link to={`/posts/${id}`}>
+                <Link to={`/posts/${id}`}>
+                    {title && (
                         <Card.Title className=''>
                             <EllipsisText
                                 text={title}
                                 length={50}
                             />
                         </Card.Title>
-                    </Link>
-                )}
-                {content && (
-                    <Card.Text>
-                        <EllipsisText
-                            text={content}
-                            length={300}
-                        />
-                    </Card.Text>
-                )}
+                    )}
+                    {content && (
+                        <Card.Text>
+                            <EllipsisText
+                                text={content}
+                                length={300}
+                            />
+                        </Card.Text>
+                    )}
+                </Link>
                 <div className={styles.PostBar}>
                     <span className='pr-1'>
                         {is_owner ? (

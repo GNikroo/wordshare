@@ -33,11 +33,11 @@
 }
 
 .Submit {
-    background-color: #9c6eb9 !important;
+    background-color: #a68cb7 !important;
 }
 
 .Submit:hover {
-    background-color: #c099d9 !important;
+    background-color: #bba4ca !important;
     color: whitesmoke;
     border-color: transparent;
     cursor: pointer;
@@ -48,11 +48,11 @@
 }
 
 .Cancel {
-    background-color: #e56b6f !important;
+    background-color: #f48084 !important;
 }
 
 .Cancel:hover {
-    background-color: #ec898c !important;
+    background-color: #e99194 !important;
     color: whitesmoke;
     border-color: transparent;
     cursor: pointer;

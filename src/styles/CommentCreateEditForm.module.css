@@ -5,7 +5,7 @@
 }
 
 .Button {
-    background-color: #e88c7d;
+    background-color: #de7665;
     border-radius: 2.5rem;
     border: none;
     color: whitesmoke;
@@ -15,5 +15,5 @@
 .Button:hover {
     cursor: pointer;
     background-color: whitesmoke;
-    color: #e88c7d;
+    color: #de7665;
 }

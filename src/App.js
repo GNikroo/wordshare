@@ -3,11 +3,17 @@ import { Route, Switch } from 'react-router-dom';
 import styles from './App.module.css';
 import './api/axiosDefaults';
 import NavBar from './components/NavBar';
+import { useCurrentUser } from './contexts/CurrentUserContext';
 import SignInForm from './pages/auth/SignInForm';
 import SignUpForm from './pages/auth/SignUpForm';
 import PostCreateForm from './pages/posts/PostCreateForm';
+import PostPage from './pages/posts/PostPage';
+import PostsPage from './pages/posts/PostsPage';
 
 function App() {
+    const currentUser = useCurrentUser();
+    const profile_id = currentUser?.profile_id || '';
+
     return (
         <div className={styles.App}>
             <NavBar />
@@ -16,7 +22,29 @@ function App() {
                     <Route
                         exact
                         path='/'
-                        render={() => <h1>Home page</h1>}
+                        render={() => (
+                            <PostsPage message='No results found. Try a different search keyword.' />
+                        )}
+                    />
+                    <Route
+                        exact
+                        path='/newest'
+                        render={() => (
+                            <PostsPage
+                                message='No results found. Try a different search keyword or follow a user'
+                                filter={`owner__followed__owner__profile=${profile_id}&`}
+                            />
+                        )}
+                    />
+                    <Route
+                        exact
+                        path='/liked'
+                        render={() => (
+                            <PostsPage
+                                message='No results found. Try a different search keyword or like a post.'
+                                filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+                            />
+                        )}
                     />
                     <Route
                         exact
@@ -32,6 +60,11 @@ function App() {
                         exact
                         path='/posts/create'
                         render={() => <PostCreateForm />}
+                    />
+                    <Route
+                        exact
+                        path='/posts/:id'
+                        render={() => <PostPage />}
                     />
                     <Route
                         render={() => (

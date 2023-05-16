@@ -104,7 +104,7 @@ const NavBar = () => {
                     fixed='top'
                 >
                     <Container className='d-block'>
-                        <Row className={styles.NavBarRow}>
+                        <Row className='align-items-center'>
                             <Col>
                                 <NavLink to='/'>
                                     <Navbar.Brand className={styles.Brand}>
@@ -119,7 +119,7 @@ const NavBar = () => {
                                 </NavLink>
                             </Col>
                             <Col>
-                                <Nav className={styles.Nav}>
+                                <Nav className={`${styles.Nav} float-right`}>
                                     {currentUser && addPostIcon}
                                     <Navbar.Toggle
                                         ref={ref}

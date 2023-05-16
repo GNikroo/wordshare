@@ -99,3 +99,7 @@
 .ImgCancel:hover:active {
     background-color: #eea6a8 !important;
 }
+
+.Toggle button {
+    border: none;
+}

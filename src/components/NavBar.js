@@ -7,6 +7,8 @@ import {
     useCurrentUser,
     useSetCurrentUser,
 } from '../contexts/CurrentUserContext';
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
+import btnStyles from '../styles/Button.module.css';
 import styles from '../styles/NavBar.module.css';
 
 import Avatar from './Avatar';
@@ -14,6 +16,8 @@ import Avatar from './Avatar';
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
+
+    const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
     const addPostIcon = (
         <NavLink
@@ -94,12 +98,13 @@ const NavBar = () => {
         <>
             <Container>
                 <Navbar
-                    className={styles.NavBar}
+                    expanded={expanded}
+                    className={`${styles.NavBar} ${btnStyles.Toggle}`}
                     expand='md'
                     fixed='top'
                 >
                     <Container className='d-block'>
-                        <Row className='justify-content-between'>
+                        <Row className={styles.NavBarRow}>
                             <Col>
                                 <NavLink to='/'>
                                     <Navbar.Brand className={styles.Brand}>
@@ -113,24 +118,30 @@ const NavBar = () => {
                                     </Navbar.Brand>
                                 </NavLink>
                             </Col>
-                            <Col></Col>
                             <Col>
                                 <Nav className={styles.Nav}>
                                     {currentUser && addPostIcon}
-                                    <NavLink
-                                        exact
-                                        className={styles.NavLink}
-                                        activeClassName={styles.Active}
-                                        to='/'
-                                    >
-                                        <i className='d-sm-block d-md-none fas fa-home p-2'></i>
-                                        <span className='d-none d-md-block p-2 pl-4'>
-                                            Home
-                                        </span>
-                                    </NavLink>
-                                    {currentUser
-                                        ? loggedInIcons
-                                        : loggedOutIcons}
+                                    <Navbar.Toggle
+                                        ref={ref}
+                                        onClick={() => setExpanded(!expanded)}
+                                        aria-controls='basic-navbar-nav'
+                                    />
+                                    <Navbar.Collapse id='basic-navbar-nav'>
+                                        <NavLink
+                                            exact
+                                            className={styles.NavLink}
+                                            activeClassName={styles.Active}
+                                            to='/'
+                                        >
+                                            <i className='d-sm-block d-md-none fas fa-home p-2'></i>
+                                            <span className='d-none d-md-block p-2 pl-4'>
+                                                Home
+                                            </span>
+                                        </NavLink>
+                                        {currentUser
+                                            ? loggedInIcons
+                                            : loggedOutIcons}
+                                    </Navbar.Collapse>
                                 </Nav>
                             </Col>
                         </Row>

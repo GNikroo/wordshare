@@ -1,6 +1,13 @@
 .NavBar {
+    margin: 0;
     background-color: #ebf3fb;
     border: 1px solid #dee6ee;
+}
+
+.Nav {
+    width: max-content;
+    align-items: center;
+    flex-direction: row;
 }
 
 .Brand {
@@ -34,12 +41,10 @@
     display: inline;
 }
 
-.Nav {
-    width: max-content;
-    align-items: center;
-    flex-direction: unset;
-}
-
 .Col {
     align-items: center;
+}
+
+.NavBarRow {
+    align-items: baseline;
 }

@@ -18,6 +18,7 @@ const Post = (props) => {
         likes_count,
         like_id,
         title,
+        image,
         content,
         feed_list,
         updated_at,
@@ -106,6 +107,12 @@ const Post = (props) => {
                 </Media>
                 <hr className={styles.Line}></hr>
             </Card.Body>
+            <Link to={`/posts/${id}`}>
+                <Card.Img
+                    src={image}
+                    alt={title}
+                />
+            </Link>
             <Link to={`/posts/${id}`}></Link>
             <Card.Body className={`${styles.CardBodyBottom} p-0`}>
                 {feed_list ? (

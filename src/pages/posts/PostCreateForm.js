@@ -40,13 +40,13 @@ function PostCreateForm() {
         }
     };
 
-    const handleCancelImage = () => {
-        URL.revokeObjectURL(image);
-        setPostData({
-            ...postData,
-            image: null,
-        });
-    };
+    // const handleCancelImage = () => {
+    //     URL.revokeObjectURL(image);
+    //     setPostData({
+    //         ...postData,
+    //         image: null,
+    //     });
+    // };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -54,11 +54,10 @@ function PostCreateForm() {
 
         formData.append('title', title);
         formData.append('content', content);
-        if (image) {
-            formData.append('image', imageInput.current.files[0]);
-        }
-
-        console.log(formData, 'form data');
+        formData.append('image', imageInput.current.files[0]);
+        // if (image) {
+        //     formData.append('image', imageInput.current.files[0]);
+        // }
 
         try {
             const { data } = await axiosReq.post('/posts/', formData);
@@ -152,7 +151,7 @@ function PostCreateForm() {
                                     change the image
                                 </Form.Label>
                                 <Button
-                                    onClick={handleCancelImage}
+                                    // onClick={handleCancelImage}
                                     className={`${btnStyles.Button} ${btnStyles.ImgCancel}`}
                                 >
                                     cancel upload

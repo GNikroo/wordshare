@@ -68,7 +68,7 @@ function CommentCreateForm(props) {
                 disabled={!content.trim()}
                 type='submit'
             >
-                <i class='fa-regular fa-paper-plane'></i>
+                <i className='fa-regular fa-paper-plane'></i>
             </button>
         </Form>
     );

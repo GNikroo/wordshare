@@ -3,12 +3,15 @@
     color: whitesmoke;
     font-size: 1rem;
     font-weight: bold;
-    align-self: center;
-    border-color: transparent;
+    align-items: center;
+    border: 0;
+    border-radius: 100px;
     padding: 4px 10px;
     margin-left: 2px;
     margin-right: 2px;
+    min-height: 35px;
     min-width: 75px;
+    cursor: pointer;
 }
 
 .Button:hover {
@@ -102,4 +105,40 @@
 
 .Toggle button {
     border: none;
+}
+
+.Follow {
+    background-color: #355070 !important;
+    font-size: 0.75rem;
+    min-height: 25px;
+    min-width: 55px;
+}
+
+.Follow:hover {
+    background-color: #4f6f95 !important;
+    color: whitesmoke;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.Follow:hover:active {
+    background-color: #6187b6 !important;
+}
+
+.Unfollow {
+    background-color: #a68cb7 !important;
+    font-size: 0.8rem;
+    min-height: 31px;
+    min-width: 59px;
+}
+
+.Unfollow:hover {
+    background-color: #bba4ca !important;
+    color: whitesmoke;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.Unfollow:hover:active {
+    background-color: #cfb7de !important;
 }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import { CurrentUserProvider } from './contexts/CurrentUserContext';
+import { ProfileDataProvider } from './contexts/ProfileDataContext';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -10,7 +11,9 @@ ReactDOM.render(
     <React.StrictMode>
         <Router>
             <CurrentUserProvider>
-                <App />
+                <ProfileDataProvider>
+                    <App />
+                </ProfileDataProvider>
             </CurrentUserProvider>
         </Router>
     </React.StrictMode>,

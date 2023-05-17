@@ -12,6 +12,7 @@ import styles from '../../styles/PostsPage.module.css';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import NoResults from '../../assets/nothing-found.png';
 import { fetchMoreData } from '../../utils/utils';
+import FollowingProfiles from '../profiles/FollowingProfiles';
 
 function PostsPage({ message, filter = '' }) {
     const [posts, setPosts] = useState({ results: [] });
@@ -49,7 +50,7 @@ function PostsPage({ message, filter = '' }) {
                 className='py-2 px-1 p-lg-2'
                 lg={8}
             >
-                <p>Profiles that may interest you mobile</p>
+                <FollowingProfiles mobile />
                 <i
                     className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`}
                 />
@@ -62,7 +63,7 @@ function PostsPage({ message, filter = '' }) {
                         onChange={(event) => setQuery(event.target.value)}
                         type='text'
                         className='mr-sm-2'
-                        placeholder='Search posts'
+                        placeholder='Search. . .'
                     />
                 </Form>
 
@@ -104,7 +105,7 @@ function PostsPage({ message, filter = '' }) {
                 md={4}
                 className='d-none d-lg-block p-0 p-lg-2'
             >
-                <p>Profiles that may interest you desktop</p>
+                <FollowingProfiles />
             </Col>
         </Row>
     );

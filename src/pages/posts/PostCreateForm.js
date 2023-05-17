@@ -1,11 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { axiosReq } from '../../api/axiosDefaults';
 
-import { Alert, Button, Container, Form, Image } from 'react-bootstrap';
+import { Alert, Button, Container, Form } from 'react-bootstrap';
 
 import appStyles from '../../App.module.css';
-import upload from '../../assets/upload.png';
-import Asset from '../../components/Asset';
 import btnStyles from '../../styles/Button.module.css';
 
 import { useHistory } from 'react-router-dom';
@@ -15,11 +13,8 @@ function PostCreateForm() {
     const [postData, setPostData] = useState({
         title: '',
         content: '',
-        image: '',
     });
-    const { title, content, image } = postData;
-
-    const imageInput = useRef(null);
+    const { title, content } = postData;
 
     const history = useHistory();
 
@@ -30,34 +25,12 @@ function PostCreateForm() {
         });
     };
 
-    const handleChangeImage = (event) => {
-        if (event.target.files.length) {
-            URL.revokeObjectURL(image);
-            setPostData({
-                ...postData,
-                image: URL.createObjectURL(event.target.files[0]),
-            });
-        }
-    };
-
-    // const handleCancelImage = () => {
-    //     URL.revokeObjectURL(image);
-    //     setPostData({
-    //         ...postData,
-    //         image: null,
-    //     });
-    // };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
 
         formData.append('title', title);
         formData.append('content', content);
-        formData.append('image', imageInput.current.files[0]);
-        // if (image) {
-        //     formData.append('image', imageInput.current.files[0]);
-        // }
 
         try {
             const { data } = await axiosReq.post('/posts/', formData);
@@ -133,58 +106,6 @@ function PostCreateForm() {
                 <Container className={`${appStyles.Content} d-none d-md-block`}>
                     {textFields}
                 </Container>
-                <Form.Group className={`text-center`}>
-                    {image ? (
-                        <>
-                            <figure>
-                                <Image
-                                    className={appStyles.Image}
-                                    src={image}
-                                    rounded
-                                />
-                            </figure>
-                            <div>
-                                <Form.Label
-                                    className={`${btnStyles.Button} ${btnStyles.ImgSubmit} btn`}
-                                    htmlFor='image-upload'
-                                >
-                                    change the image
-                                </Form.Label>
-                                <Button
-                                    // onClick={handleCancelImage}
-                                    className={`${btnStyles.Button} ${btnStyles.ImgCancel}`}
-                                >
-                                    cancel upload
-                                </Button>
-                            </div>
-                        </>
-                    ) : (
-                        <Form.Label
-                            className='d-flex justify-content-center'
-                            htmlFor='image-upload'
-                        >
-                            <Asset
-                                src={upload}
-                                message='Click or tap to upload an image'
-                            />
-                        </Form.Label>
-                    )}
-                    <Form.File
-                        id='image-upload'
-                        accept='image/*'
-                        onChange={handleChangeImage}
-                        className='invisible'
-                        ref={imageInput}
-                    />
-                </Form.Group>
-                {errors?.image?.map((message, idx) => (
-                    <Alert
-                        variant='warning'
-                        key={idx}
-                    >
-                        {message}
-                    </Alert>
-                ))}
             </Container>
         </Form>
     );

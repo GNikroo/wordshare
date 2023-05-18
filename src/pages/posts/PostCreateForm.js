@@ -34,7 +34,6 @@ function PostCreateForm() {
 
         try {
             const { data } = await axiosReq.post('/posts/', formData);
-            console.log(formData, 'form data try catch');
             history.push(`/posts/${data.id}`);
             console.log(data, 'data');
         } catch (err) {

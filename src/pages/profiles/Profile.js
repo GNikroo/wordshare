@@ -3,6 +3,7 @@ import { Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Avatar from '../../components/Avatar';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { useSetProfileData } from '../../contexts/ProfileDataContext';
 import btnStyles from '../../styles/Button.module.css';
 import styles from '../../styles/Profile.module.css';
 
@@ -12,6 +13,8 @@ const Profile = (props) => {
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
+
+    const { handleFollow, handleUnfollow } = useSetProfileData();
 
     return (
         <div
@@ -50,21 +53,21 @@ const Profile = (props) => {
                             {owner}
                         </div>
                     )}
-                    <div className={`text-right ${!mobile && 'ml-auto'}`}>
+                    <div className={`text-left ${!mobile && 'ml-auto'}`}>
                         {!mobile &&
                             currentUser &&
                             !is_owner &&
                             (following_id ? (
                                 <Button
                                     className={`${btnStyles.Button} ${btnStyles.Unfollow}`}
-                                    onClick={() => {}}
+                                    onClick={() => handleUnfollow(profile)}
                                 >
                                     unfollow
                                 </Button>
                             ) : (
                                 <Button
                                     className={`${btnStyles.Button} ${btnStyles.Follow} d-flex`}
-                                    onClick={() => {}}
+                                    onClick={() => handleFollow(profile)}
                                 >
                                     follow
                                 </Button>

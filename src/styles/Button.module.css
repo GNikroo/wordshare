@@ -127,9 +127,9 @@
 
 .Unfollow {
     background-color: #a68cb7 !important;
-    font-size: 0.8rem;
-    min-height: 31px;
-    min-width: 59px;
+    font-size: 0.75rem;
+    min-height: 25px;
+    min-width: 55px;
 }
 
 .Unfollow:hover {

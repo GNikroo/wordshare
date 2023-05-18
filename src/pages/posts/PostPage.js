@@ -10,6 +10,7 @@ import { axiosReq } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Comment from '../comments/Comment';
 import CommentCreateForm from '../comments/CommentCreateForm';
+import FollowingProfiles from '../profiles/FollowingProfiles';
 import Post from './Post';
 
 function PostPage() {
@@ -42,7 +43,7 @@ function PostPage() {
                 className='py-2 p-0 p-lg-2'
                 lg={8}
             >
-                <p>Following profiles for mobile</p>
+                <FollowingProfiles mobile />
                 <Post
                     {...post.results[0]}
                     setPosts={setPost}
@@ -80,7 +81,7 @@ function PostPage() {
                 lg={4}
                 className='d-none d-lg-block p-0 p-lg-2'
             >
-                Following profiles for desktop
+                <FollowingProfiles />
             </Col>
         </Row>
     );

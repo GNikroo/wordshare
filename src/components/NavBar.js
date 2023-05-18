@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
+import { Container, Nav, Navbar, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/quill.png';
 import {
@@ -25,7 +25,7 @@ const NavBar = () => {
             activeClassName={styles.AddPostActive}
             to='/posts/create'
         >
-            <i className='d-inline p-2 fas fa-plus-square'></i>
+            <i className='d-inline p-1 fas fa-plus-square'></i>
             <span className='d-none d-md-block pr-4'>add post</span>
         </NavLink>
     );
@@ -104,46 +104,44 @@ const NavBar = () => {
                     fixed='top'
                 >
                     <Container className='d-block'>
-                        <Row className='align-items-center'>
-                            <Col>
+                        <Row className='m-0 justify-content-between'>
+                            <span className='d-flex'>
                                 <NavLink to='/'>
                                     <Navbar.Brand className={styles.Brand}>
                                         Word
                                         <img
                                             src={logo}
                                             alt='logo'
-                                            height='45px'
+                                            height='38px'
                                         />
                                         Share
                                     </Navbar.Brand>
                                 </NavLink>
-                            </Col>
-                            <Col>
-                                <Nav className={`${styles.Nav} float-right`}>
-                                    {currentUser && addPostIcon}
-                                    <Navbar.Toggle
-                                        ref={ref}
-                                        onClick={() => setExpanded(!expanded)}
-                                        aria-controls='basic-navbar-nav'
-                                    />
-                                    <Navbar.Collapse id='basic-navbar-nav'>
-                                        <NavLink
-                                            exact
-                                            className={styles.NavLink}
-                                            activeClassName={styles.Active}
-                                            to='/'
-                                        >
-                                            <i className='d-sm-block d-md-none fas fa-home p-2'></i>
-                                            <span className='d-none d-md-block p-2 pl-4'>
-                                                Home
-                                            </span>
-                                        </NavLink>
-                                        {currentUser
-                                            ? loggedInIcons
-                                            : loggedOutIcons}
-                                    </Navbar.Collapse>
-                                </Nav>
-                            </Col>
+                                {currentUser && addPostIcon}
+                            </span>
+                            <Nav className={`${styles.Nav} float-right`}>
+                                <Navbar.Toggle
+                                    ref={ref}
+                                    onClick={() => setExpanded(!expanded)}
+                                    aria-controls='basic-navbar-nav'
+                                />
+                                <Navbar.Collapse id='basic-navbar-nav'>
+                                    <NavLink
+                                        exact
+                                        className={styles.NavLink}
+                                        activeClassName={styles.Active}
+                                        to='/'
+                                    >
+                                        <i className='d-sm-block d-md-none fas fa-home p-2'></i>
+                                        <span className='d-none d-md-block p-2 pl-4'>
+                                            Home
+                                        </span>
+                                    </NavLink>
+                                    {currentUser
+                                        ? loggedInIcons
+                                        : loggedOutIcons}
+                                </Navbar.Collapse>
+                            </Nav>
                         </Row>
                     </Container>
                 </Navbar>

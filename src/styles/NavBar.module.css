@@ -1,7 +1,6 @@
 .NavBar {
     margin: 0;
     background-color: #ebf3fb;
-    border: 1px solid #dee6ee;
 }
 
 .Nav {
@@ -23,6 +22,10 @@
     align-items: center;
     display: flex;
     font-weight: bold;
+}
+
+.AddPostActive {
+    padding: 0.25rem;
 }
 
 .AddPost:hover {

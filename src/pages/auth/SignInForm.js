@@ -6,11 +6,14 @@ import { Alert, Button, Card, Container, Form } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import { useRedirect } from '../../hooks/useRedirect';
+
 import btnStyles from '../../styles/Button.module.css';
 import styles from '../../styles/SignInUpForm.module.css';
 
 function SignInForm() {
     const setCurrentUser = useSetCurrentUser();
+    useRedirect('loggedIn');
 
     const [signInData, setSignInData] = useState({
         username: '',
@@ -37,7 +40,7 @@ function SignInForm() {
                 signInData
             );
             setCurrentUser(data.user);
-            history.push('/');
+            history.goBack();
         } catch (err) {
             setErrors(err.response?.data);
         }

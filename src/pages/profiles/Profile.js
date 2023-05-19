@@ -50,7 +50,12 @@ const Profile = (props) => {
                         <div className={`mx-2 ${styles.MobileProfile}`}></div>
                     ) : (
                         <div className={`mx-2 ${styles.DesktopProfile}`}>
-                            {owner}
+                            <Link
+                                className='align-self-center'
+                                to={`/profiles/${id}`}
+                            >
+                                {owner}
+                            </Link>
                         </div>
                     )}
                     <div className={`text-left ${!mobile && 'ml-auto'}`}>

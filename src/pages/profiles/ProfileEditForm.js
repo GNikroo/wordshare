@@ -11,7 +11,7 @@ import {
     Row,
 } from 'react-bootstrap';
 
-import axios from 'axios'
+import axios from 'axios';
 import { axiosReq } from '../../api/axiosDefaults';
 import {
     useCurrentUser,

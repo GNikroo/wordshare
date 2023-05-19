@@ -72,7 +72,7 @@ function ProfilePage() {
                 </Col>
                 <Col
                     className='mt-3'
-                    lg={6}
+                    lg={5}
                 >
                     <span className='align-text-bottom'>
                         <h3 className='d-inline m-2'>{profile?.owner}</h3>
@@ -142,8 +142,15 @@ function ProfilePage() {
                             ))}
                     </Col>
                 </Col>
+            </Row>
+            <Row>
+                {' '}
                 {profile?.content && (
-                    <Col className='p-3'>{profile.content}</Col>
+                    <Col className='text-center pb-3'>
+                        <strong className={styles.Bio}>
+                            {profile.content}
+                        </strong>
+                    </Col>
                 )}
             </Row>
         </>

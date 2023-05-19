@@ -11,6 +11,7 @@ import {
     Row,
 } from 'react-bootstrap';
 
+import axios from 'axios'
 import { axiosReq } from '../../api/axiosDefaults';
 import {
     useCurrentUser,
@@ -37,6 +38,7 @@ const ProfileEditForm = () => {
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
+        const source = axios.CancelToken.source();
         const handleMount = async () => {
             if (currentUser?.profile_id?.toString() === id) {
                 try {
@@ -51,8 +53,8 @@ const ProfileEditForm = () => {
                 history.push('/');
             }
         };
-
         handleMount();
+        return () => source.cancel();
     }, [currentUser, history, id]);
 
     const handleChange = (event) => {
@@ -71,7 +73,6 @@ const ProfileEditForm = () => {
         if (imageFile?.current?.files[0]) {
             formData.append('image', imageFile?.current?.files[0]);
         }
-        console.log(formData);
 
         try {
             const { data } = await axiosReq.put(`/profiles/${id}/`, formData);

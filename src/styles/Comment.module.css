@@ -1,10 +1,17 @@
-.Owner {
+.PurpleOwner {
+    font-weight: bold;
+    color: #924354;
+    margin-right: 8px;
+}
+
+.NotOwner {
     font-weight: bold;
     color: #e56b6f;
     margin-right: 8px;
 }
 
 .Date {
+    margin-left: 0.5rem;
     font-weight: lighter;
-    color: #c1c1c5;
+    color: #96acc6;
 }

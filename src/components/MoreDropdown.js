@@ -67,7 +67,7 @@ export const ProfileEditDropdown = ({ id }) => {
                     }
                     aria-label='edit-username'
                 >
-                    <i class='fa-regular fa-address-card pr-1'></i>
+                    <i className='fa-regular fa-address-card pr-1'></i>
                     change username
                 </Dropdown.Item>
                 <Dropdown.Item

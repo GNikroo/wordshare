@@ -53,8 +53,18 @@ const Comment = (props) => {
                     <Avatar src={profile_image} />
                 </Link>
                 <Media.Body className='align-self-center ml-2'>
-                    <span className={styles.Owner}>{owner}</span>
-                    <span className={styles.Date}>{updated_at}</span>
+                    {is_owner ? (
+                        <>
+                            <span className={styles.PurpleOwner}>{owner}</span>
+                            <span className={styles.Date}>{updated_at}</span>
+                        </>
+                    ) : (
+                        <>
+                            <span className={styles.NotOwner}>{owner}</span>
+                            <span className={styles.Date}>{updated_at}</span>
+                        </>
+                    )}
+
                     {showEditForm ? (
                         <CommentEditForm
                             id={id}

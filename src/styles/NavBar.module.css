@@ -5,7 +5,12 @@
 
 .Nav {
     width: max-content;
-    align-items: center;
+    /* align-items: center; */
+    flex-direction: row;
+}
+
+.Collapse {
+    display: flex;
     flex-direction: row;
 }
 

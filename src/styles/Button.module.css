@@ -3,12 +3,10 @@
     color: whitesmoke;
     font-size: 1rem;
     font-weight: bold;
-    align-items: center;
     border: 0;
     border-radius: 100px;
     padding: 4px 10px;
-    margin-left: 2px;
-    margin-right: 2px;
+    margin: 0 2px;
     min-height: 35px;
     min-width: 75px;
     cursor: pointer;
@@ -17,8 +15,6 @@
 .Button:hover {
     background-color: #eaac8b !important;
     color: whitesmoke;
-    border-color: transparent;
-    cursor: pointer;
 }
 
 .Button:hover:active {
@@ -32,7 +28,6 @@
 
 .Button:focus {
     background-color: #eaac8b;
-    border-color: transparent;
 }
 
 .Submit {
@@ -42,8 +37,6 @@
 .Submit:hover {
     background-color: #bba4ca !important;
     color: whitesmoke;
-    border-color: transparent;
-    cursor: pointer;
 }
 
 .Submit:hover:active {
@@ -57,8 +50,6 @@
 .Cancel:hover {
     background-color: #e99194 !important;
     color: whitesmoke;
-    border-color: transparent;
-    cursor: pointer;
 }
 
 .Cancel:hover:active {
@@ -76,8 +67,6 @@
 .ImgSubmit:hover {
     background-color: #c099d9 !important;
     color: whitesmoke !important;
-    border-color: transparent;
-    cursor: pointer;
 }
 
 .ImgSubmit:hover:active {
@@ -95,8 +84,6 @@
 .ImgCancel:hover {
     background-color: #ec898c !important;
     color: whitesmoke !important;
-    border-color: transparent;
-    cursor: pointer;
 }
 
 .ImgCancel:hover:active {
@@ -117,8 +104,6 @@
 .Follow:hover {
     background-color: #4f6f95 !important;
     color: whitesmoke;
-    border-color: transparent;
-    cursor: pointer;
 }
 
 .Follow:hover:active {
@@ -135,8 +120,6 @@
 .Unfollow:hover {
     background-color: #bba4ca !important;
     color: whitesmoke;
-    border-color: transparent;
-    cursor: pointer;
 }
 
 .Unfollow:hover:active {

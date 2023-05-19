@@ -12,6 +12,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import NoResults from '../../assets/nothing-found.png';
+import { ProfileEditDropdown } from '../../components/MoreDropdown';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import {
     useProfileData,
@@ -73,7 +74,12 @@ function ProfilePage() {
                     className='mt-3'
                     lg={6}
                 >
-                    <h3 className='d-inline m-2'>{profile?.owner}</h3>{' '}
+                    <span className='align-text-bottom'>
+                        <h3 className='d-inline m-2'>{profile?.owner}</h3>
+                        {profile?.is_owner && (
+                            <ProfileEditDropdown id={profile?.id} />
+                        )}
+                    </span>
                     <span className='d-none d-lg-inline align-text-bottom'>
                         {currentUser &&
                             !is_owner &&

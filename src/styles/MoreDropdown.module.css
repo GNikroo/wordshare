@@ -5,7 +5,9 @@
 }
 
 .Absolute {
-    position: absolute;
+    cursor: pointer;
     right: 0;
     z-index: 99;
+    display: inline;
+    vertical-align: inherit;
 }

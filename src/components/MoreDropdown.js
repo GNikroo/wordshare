@@ -1,10 +1,11 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useHistory } from 'react-router';
 import styles from '../styles/MoreDropdown.module.css';
 
-const ThreeDots = React.forwardRef(({ onClick }, ref) => (
+const CaretDown = React.forwardRef(({ onClick }, ref) => (
     <i
-        className='pl-2 fas fa-caret-down'
+        className='fa-regular fa-square-caret-down'
         ref={ref}
         onClick={(e) => {
             e.preventDefault();
@@ -19,7 +20,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
             className='ml-auto'
             drop='left'
         >
-            <Dropdown.Toggle as={ThreeDots} />
+            <Dropdown.Toggle as={CaretDown} />
 
             <Dropdown.Menu
                 className='text-center'
@@ -30,14 +31,53 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
                     onClick={handleEdit}
                     aria-label='edit'
                 >
-                    <i className='fa-regular fa-pen-to-square' />
+                    <i className='fas fa-edit' />
                 </Dropdown.Item>
                 <Dropdown.Item
                     className={styles.DropdownItem}
                     onClick={handleDelete}
                     aria-label='delete'
                 >
-                    <i className='fa-regular fa-trash-can' />
+                    <i className='fas fa-trash-alt' />
+                </Dropdown.Item>
+            </Dropdown.Menu>
+        </Dropdown>
+    );
+};
+
+export const ProfileEditDropdown = ({ id }) => {
+    const history = useHistory();
+    return (
+        <Dropdown
+            className={`ml-auto px-3 ${styles.Absolute}`}
+            drop='left'
+        >
+            <Dropdown.Toggle as={CaretDown} />
+            <Dropdown.Menu>
+                <Dropdown.Item
+                    onClick={() => history.push(`/profiles/${id}/edit`)}
+                    aria-label='edit-profile'
+                >
+                    <i className='fas fa-edit pr-1' />
+                    edit profile and image
+                </Dropdown.Item>
+                <Dropdown.Item
+                    onClick={() =>
+                        history.push(`/profiles/${id}/edit/username`)
+                    }
+                    aria-label='edit-username'
+                >
+                    <i class='fa-regular fa-address-card pr-1'></i>
+                    change username
+                </Dropdown.Item>
+                <Dropdown.Item
+                    onClick={() =>
+                        history.push(`/profiles/${id}/edit/password`)
+                    }
+                    aria-label='edit-password'
+                >
+                    <i className='fas fa-key pr-1' />
+                    change password
                 </Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>

@@ -5,6 +5,7 @@ import appStyles from '../../App.module.css';
 import { axiosRes } from '../../api/axiosDefaults';
 import Avatar from '../../components/Avatar';
 import { MoreDropdown } from '../../components/MoreDropdown';
+import PostImage from '../../components/PostImage';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import styles from '../../styles/Post.module.css';
 
@@ -18,6 +19,7 @@ const Post = (props) => {
         likes_count,
         like_id,
         title,
+        image,
         content,
         feed_list,
         updated_at,
@@ -82,6 +84,36 @@ const Post = (props) => {
         }
     };
 
+    const imageLink = (
+        <>
+            {image ? (
+                <>
+                    <Link to={`/posts/${id}`}>
+                        <PostImage
+                            height={100}
+                            width={'auto'}
+                            src={image}
+                            alt={title}
+                        />
+                    </Link>
+                </>
+            ) : (
+                <></>
+            )}
+        </>
+    );
+
+    const imagePost = (
+        <>
+            <PostImage
+                height={'auto'}
+                width={250}
+                src={image}
+                alt={title}
+            />
+        </>
+    );
+
     return (
         <Card className={`${styles.Post} align-items-center mx-2`}>
             <Card.Body className={`${styles.CardBodyTop} p-0`}>
@@ -106,11 +138,10 @@ const Post = (props) => {
                 </Media>
                 <hr className={styles.Line}></hr>
             </Card.Body>
-            <Link to={`/posts/${id}`}></Link>
             <Card.Body className={`${styles.CardBodyBottom} p-0`}>
                 {feed_list ? (
                     <Link to={`/posts/${id}`}>
-                        {' '}
+                        {imageLink}
                         <div className={appStyles.Truncated}>
                             {title && <Card.Title>{title}</Card.Title>}
                             {content && (
@@ -122,6 +153,7 @@ const Post = (props) => {
                     </Link>
                 ) : (
                     <>
+                        {imagePost}
                         {title && <Card.Title>{title}</Card.Title>}
                         {content && (
                             <Card.Text className={styles.TextAlignLeft}>

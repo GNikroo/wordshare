@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useRedirect } from '../../hooks/useRedirect';
 
-import { Alert, Button, Container, Form } from 'react-bootstrap';
+import {
+    Alert,
+    Button,
+    Col,
+    Container,
+    Figure,
+    Form,
+    Row,
+} from 'react-bootstrap';
 
 import appStyles from '../../App.module.css';
+import Asset from '../../components/Asset';
 import btnStyles from '../../styles/Button.module.css';
 
 import { useHistory } from 'react-router-dom';
+import upload from '../../assets/upload.png';
 
 function PostCreateForm() {
     useRedirect('loggedOut');
@@ -15,9 +25,11 @@ function PostCreateForm() {
     const [postData, setPostData] = useState({
         title: '',
         content: '',
+        image: '',
     });
-    const { title, content } = postData;
+    const { title, content, image } = postData;
 
+    const imageInput = useRef(null);
     const history = useHistory();
 
     const handleChange = (event) => {
@@ -27,12 +39,25 @@ function PostCreateForm() {
         });
     };
 
+    const handleChangeImage = (event) => {
+        if (event.target.files.length) {
+            URL.revokeObjectURL(image);
+            setPostData({
+                ...postData,
+                image: URL.createObjectURL(event.target.files[0]),
+            });
+        }
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
 
         formData.append('title', title);
         formData.append('content', content);
+        if (image) {
+            formData.append('image', imageInput.current.files[0]);
+        }
 
         try {
             const { data } = await axiosReq.post('/posts/', formData);
@@ -101,12 +126,80 @@ function PostCreateForm() {
     return (
         <Form onSubmit={handleSubmit}>
             <Container
-                className={`${appStyles.Content} d-flex mt-4 align-items-center`}
+                className={`${appStyles.Content} mt-4 align-items-center`}
             >
-                <div className='d-md-none'>{textFields}</div>
-                <Container className={`${appStyles.Content} d-none d-md-block`}>
-                    {textFields}
-                </Container>
+                <Form.Group className='text-center'>
+                    {image ? (
+                        <Row>
+                            <Col>
+                                <Figure>
+                                    <Figure.Image
+                                        className={appStyles.Image}
+                                        src={image}
+                                        rounded
+                                    />
+                                </Figure>
+                                <div>
+                                    <div>
+                                        <Form.Label
+                                            className={`d-inline m-0 ${btnStyles.Button} ${btnStyles.ImgSubmit}`}
+                                            htmlFor='image-upload'
+                                        >
+                                            change the image
+                                        </Form.Label>
+                                    </div>
+                                    <div>
+                                        <Form.Label
+                                            className={`d-inline m-0 ${btnStyles.Button} ${btnStyles.ImgCancel}`}
+                                            htmlFor='image-upload'
+                                        >
+                                            cancel upload
+                                        </Form.Label>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                    ) : (
+                        <Row>
+                            <Col>
+                                <Form.Label
+                                    className='justify-content-center'
+                                    htmlFor='image-upload'
+                                >
+                                    <Asset
+                                        src={upload}
+                                        message='Click or tap to upload an image'
+                                    />
+                                </Form.Label>
+                            </Col>
+                        </Row>
+                    )}
+                    <Form.File
+                        id='image-upload'
+                        accept='image/*'
+                        onChange={handleChangeImage}
+                        className='d-none'
+                        ref={imageInput}
+                    />
+                </Form.Group>
+                {errors?.image?.map((message, idx) => (
+                    <Alert
+                        variant='warning'
+                        key={idx}
+                    >
+                        {message}
+                    </Alert>
+                ))}
+                <Row>
+                    <Col>
+                        <div className='d-md-none'>{textFields}</div>
+                        <Container
+                            className={`${appStyles.Content} d-none d-md-block`}
+                        >
+                            {textFields}
+                        </Container>
+                    </Col>
+                </Row>
             </Container>
         </Form>
     );

@@ -49,9 +49,19 @@ const Comment = (props) => {
         <>
             <hr />
             <Media>
-                <Link to={`/profiles/${profile_id}`}>
-                    <Avatar src={profile_image} />
-                </Link>
+                {is_owner ? (
+                    <>
+                        <Avatar src={profile_image} />
+                    </>
+                ) : (
+                    <>
+                        {' '}
+                        <Link to={`/profiles/${profile_id}`}>
+                            <Avatar src={profile_image} />
+                        </Link>
+                    </>
+                )}
+
                 <Media.Body className='align-self-center ml-2'>
                     {is_owner ? (
                         <>
@@ -60,7 +70,9 @@ const Comment = (props) => {
                         </>
                     ) : (
                         <>
-                            <span className={styles.NotOwner}>{owner}</span>
+                            <Link to={`/profiles/${profile_id}`}>
+                                <span className={styles.NotOwner}>{owner}</span>
+                            </Link>
                             <span className={styles.Date}>{updated_at}</span>
                         </>
                     )}

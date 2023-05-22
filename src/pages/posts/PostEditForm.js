@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
+import { Alert, Button, Container, Figure, Form } from 'react-bootstrap';
 
 import appStyles from '../../App.module.css';
 import btnStyles from '../../styles/Button.module.css';
 
 import { useHistory, useParams } from 'react-router';
 import { axiosReq } from '../../api/axiosDefaults';
+import upload from '../../assets/upload.png';
+import Asset from '../../components/Asset';
 
 function PostEditForm() {
+    const [deleteImage, setDeleteImage] = useState();
     const [errors, setErrors] = useState({});
 
     const [postData, setPostData] = useState({
         title: '',
         content: '',
+        image: '',
     });
-    const { title, content } = postData;
+    const { title, content, image } = postData;
 
+    const imageInput = useRef(null);
     const history = useHistory();
     const { id } = useParams();
 
@@ -27,9 +29,11 @@ function PostEditForm() {
         const handleMount = async () => {
             try {
                 const { data } = await axiosReq.get(`/posts/${id}/`);
-                const { title, content, is_owner } = data;
+                const { title, content, image, is_owner } = data;
 
-                is_owner ? setPostData({ title, content }) : history.push('/');
+                is_owner
+                    ? setPostData({ title, content, image })
+                    : history.push('/');
             } catch (err) {
                 console.log(err);
             }
@@ -45,12 +49,41 @@ function PostEditForm() {
         });
     };
 
+    const handleChangeImage = (event) => {
+        if (event.target.files.length) {
+            URL.revokeObjectURL(image);
+            setPostData({
+                ...postData,
+                image: URL.createObjectURL(event.target.files[0]),
+            });
+        }
+    };
+
+    const handleDeleteImage = async () => {
+        setDeleteImage(true);
+        URL.revokeObjectURL(image);
+        setPostData({
+            ...postData,
+            image: null,
+        });
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
 
         formData.append('title', title);
         formData.append('content', content);
+
+        if (deleteImage) {
+            try {
+                await axiosReq.delete(`/posts/${id}/delete-image/`);
+            } catch (err) {
+                console.log(err);
+            }
+        } else if (imageInput?.current?.files[0]) {
+            formData.append('image', imageInput.current.files[0]);
+        }
 
         try {
             await axiosReq.put(`/posts/${id}/`, formData);
@@ -64,7 +97,7 @@ function PostEditForm() {
     };
 
     const textFields = (
-        <div>
+        <div className='text-center'>
             <Form.Group>
                 <Form.Label>Title</Form.Label>
                 <Form.Control
@@ -82,8 +115,9 @@ function PostEditForm() {
                     {message}
                 </Alert>
             ))}
+
             <Form.Group>
-                <Form.Label>Post</Form.Label>
+                <Form.Label>Content</Form.Label>
                 <Form.Control
                     as='textarea'
                     rows={6}
@@ -104,7 +138,7 @@ function PostEditForm() {
                 className={`${btnStyles.Button} ${btnStyles.Submit}`}
                 type='submit'
             >
-                update
+                save
             </Button>
             <Button
                 className={`${btnStyles.Button} ${btnStyles.Cancel}`}
@@ -118,13 +152,69 @@ function PostEditForm() {
     return (
         <Form onSubmit={handleSubmit}>
             <Container
-                className={`${appStyles.Content} d-flex mt-4 align-items-center`}
+                className={`${appStyles.Content} d-flex flex-column justify-content-center`}
             >
+                <Form.Group className='text-center'>
+                    <Figure>
+                        <Figure.Image
+                            className={appStyles.Image}
+                            src={image}
+                            rounded
+                        />
+                    </Figure>
+                    <div>
+                        {image ? (
+                            <>
+                                <Form.Label
+                                    className={`${btnStyles.Button} ${btnStyles.ImgSubmit}`}
+                                    htmlFor='image-upload'
+                                >
+                                    change image
+                                </Form.Label>
+                                <div>
+                                    <Form.Label
+                                        className={`d-inline m-0 ${btnStyles.Button} ${btnStyles.ImgCancel}`}
+                                        htmlFor='cancel-image'
+                                        onClick={handleDeleteImage}
+                                    >
+                                        delete image
+                                    </Form.Label>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <Form.Label
+                                    className='justify-content-center'
+                                    htmlFor='image-upload'
+                                >
+                                    <Asset
+                                        src={upload}
+                                        message='Click or tap to upload an image'
+                                    />
+                                </Form.Label>
+                            </>
+                        )}
+                    </div>
+                    <Form.File
+                        id='image-upload'
+                        accept='image/*'
+                        onChange={handleChangeImage}
+                        ref={imageInput}
+                        className='d-none'
+                    />
+                </Form.Group>
+                {errors?.image?.map((message, idx) => (
+                    <Alert
+                        variant='warning'
+                        key={idx}
+                    >
+                        {message}
+                    </Alert>
+                ))}
+
                 <div className='d-md-none'>{textFields}</div>
-                <Container className={`${appStyles.Content} d-none d-md-block`}>
-                    {textFields}
-                </Container>
             </Container>
+            <Container className={appStyles.Content}>{textFields}</Container>
         </Form>
     );
 }

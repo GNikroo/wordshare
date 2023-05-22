@@ -49,6 +49,14 @@ function PostCreateForm() {
         }
     };
 
+    const handleCancelImage = async () => {
+        URL.revokeObjectURL(image);
+        setPostData({
+            ...postData,
+            image: null,
+        });
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -152,6 +160,7 @@ function PostCreateForm() {
                                         <Form.Label
                                             className={`d-inline m-0 ${btnStyles.Button} ${btnStyles.ImgCancel}`}
                                             htmlFor='image-upload'
+                                            onClick={handleCancelImage}
                                         >
                                             cancel upload
                                         </Form.Label>

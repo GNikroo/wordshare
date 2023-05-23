@@ -1,12 +1,23 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import appStyles from '../../App.module.css';
+import AddFollower from '../../assets/add-friend.png';
 import Asset from '../../components/Asset';
 import { useProfileData } from '../../contexts/ProfileDataContext';
 import Profile from './Profile';
 
 const FollowingProfiles = ({ mobile }) => {
     const { followingProfiles } = useProfileData();
+
+    const follow = (
+        <>
+            <NavLink to={`/feed`}>
+                <Asset src={AddFollower} />
+                Click here to find users to follow
+            </NavLink>
+        </>
+    );
 
     return (
         <Container
@@ -38,7 +49,7 @@ const FollowingProfiles = ({ mobile }) => {
                     )}
                 </>
             ) : (
-                <Asset spinner />
+                <>{follow}</>
             )}
         </Container>
     );

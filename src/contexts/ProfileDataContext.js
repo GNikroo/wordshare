@@ -70,7 +70,7 @@ export const ProfileDataProvider = ({ children }) => {
         const handleMount = async () => {
             try {
                 const { data } = await axiosReq.get(
-                    '/profiles/?ordering=-followers_count'
+                    `/profiles/?owner__followed__owner__profile=${currentUser.profile_id}`
                 );
                 setProfileData((prevState) => ({
                     ...prevState,
@@ -80,8 +80,9 @@ export const ProfileDataProvider = ({ children }) => {
                 console.log(err);
             }
         };
-
-        handleMount();
+        if (currentUser) {
+            handleMount();
+        }
     }, [currentUser]);
 
     return (

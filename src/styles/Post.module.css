@@ -43,7 +43,7 @@
     padding: 0 1rem 1rem !important;
 }
 
-.Flip {
+.Mirror {
     transform: scale(-1, 1);
 }
 

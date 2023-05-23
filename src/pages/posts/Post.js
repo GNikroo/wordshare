@@ -203,7 +203,7 @@ const Post = (props) => {
                     <span className='pl-2'>
                         <Link to={`/posts/${id}`}>
                             <i
-                                className={`${styles.Flip} ${styles.Comment} fa-solid fa-comment`}
+                                className={`${styles.Mirror} ${styles.Comment} fa-solid fa-comment`}
                             />
                         </Link>
                         <span className='pl-1'>{comments_count}</span>

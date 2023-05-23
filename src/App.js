@@ -53,6 +53,16 @@ function App() {
                     />
                     <Route
                         exact
+                        path='/commented'
+                        render={() => (
+                            <PostsPage
+                                message='No results found. Try a different search keyword or comment on a post.'
+                                filter={`comment__owner__profile=${profile_id}&ordering=-comment__created_at&`}
+                            />
+                        )}
+                    />
+                    <Route
+                        exact
                         path='/signin'
                         render={() => <SignInForm />}
                     />

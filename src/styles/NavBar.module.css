@@ -5,7 +5,6 @@
 
 .Nav {
     width: max-content;
-    /* align-items: center; */
     flex-direction: row;
 }
 
@@ -51,4 +50,8 @@
 
 .Col {
     align-items: center;
+}
+
+.Flip {
+    transform: rotate(0.5turn);
 }

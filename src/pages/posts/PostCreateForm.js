@@ -172,7 +172,7 @@ function PostCreateForm() {
                         <Row>
                             <Col>
                                 <Form.Label
-                                    className='justify-content-center'
+                                    className={`${appStyles.ClickTap} justify-content-center`}
                                     htmlFor='image-upload'
                                 >
                                     <Asset

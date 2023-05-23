@@ -10,25 +10,16 @@ import Profile from './Profile';
 const FollowingProfiles = ({ mobile }) => {
     const { followingProfiles } = useProfileData();
 
-    const follow = (
-        <>
-            <NavLink to={`/feed`}>
-                <Asset src={AddFollower} />
-                Click here to find users to follow
-            </NavLink>
-        </>
-    );
-
     return (
         <Container
             className={`${appStyles.Content} ${
                 mobile && 'd-lg-none text-center mb-3'
             }`}
         >
-            {followingProfiles.results.length ? (
+            {followingProfiles.results?.length ? (
                 <>
                     {mobile ? (
-                        <div className={`d-flex justify-content-around`}>
+                        <div className='d-flex justify-content-around'>
                             {followingProfiles.results
                                 .slice(0, 5)
                                 .map((profile) => (
@@ -49,7 +40,16 @@ const FollowingProfiles = ({ mobile }) => {
                     )}
                 </>
             ) : (
-                <>{follow}</>
+                <div>
+                    <NavLink to={`/feed`}>
+                        <div className='d-sm-none d-md-block'>
+                            <Asset src={AddFollower} />
+                        </div>
+                        <span className={appStyles.ClickTap}>
+                            Click or tap here to find users to follow
+                        </span>
+                    </NavLink>
+                </div>
             )}
         </Container>
     );

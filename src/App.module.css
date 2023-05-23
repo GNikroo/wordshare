@@ -45,3 +45,9 @@ a:hover {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
 }
+
+.ClickTap {
+    font-weight: bold !important;
+    cursor: pointer;
+    color: #e88c7d !important;
+}

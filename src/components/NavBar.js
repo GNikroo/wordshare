@@ -44,18 +44,12 @@ const NavBar = () => {
             <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.Active}
-                to='/liked'
+                to='/feed'
             >
-                <i className='d-sm-block d-md-none p-2 fas fa-heart'></i>
-                <span className='d-none d-md-block p-2'>Liked</span>
-            </NavLink>
-            <NavLink
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-                to='/newest'
-            >
-                <i className='d-sm-block d-md-none p-2 fas fa-stream'></i>
-                <span className='d-none d-md-block p-2'>Newest</span>
+                <i
+                    className={`${styles.Flip} d-sm-block d-md-none p-2 fa-solid fa-arrow-up-short-wide`}
+                ></i>
+                <span className='d-none d-md-block p-2'>Latest</span>
             </NavLink>
             <NavLink
                 className={styles.NavLink}

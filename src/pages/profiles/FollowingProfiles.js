@@ -5,6 +5,7 @@ import appStyles from '../../App.module.css';
 import AddFollower from '../../assets/add-friend.png';
 import Asset from '../../components/Asset';
 import { useProfileData } from '../../contexts/ProfileDataContext';
+import styles from '../../styles/FollowingProfiles.module.css';
 import Profile from './Profile';
 
 const FollowingProfiles = ({ mobile }) => {
@@ -12,9 +13,9 @@ const FollowingProfiles = ({ mobile }) => {
 
     return (
         <Container
-            className={`${appStyles.Content} ${
+            className={`${appStyles.Content} ${styles.List} ${
                 mobile && 'd-lg-none text-center mb-3'
-            }`}
+            } py-2`}
         >
             {followingProfiles.results?.length ? (
                 <>

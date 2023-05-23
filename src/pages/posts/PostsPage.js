@@ -11,6 +11,7 @@ import styles from '../../styles/PostsPage.module.css';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 import NoResults from '../../assets/nothing-found.png';
+import PostInteractions from '../../components/PostInteractions';
 import { fetchMoreData } from '../../utils/utils';
 import FollowingProfiles from '../profiles/FollowingProfiles';
 
@@ -45,15 +46,14 @@ function PostsPage({ message, filter = '' }) {
     }, [filter, query, pathname]);
 
     return (
-        <Row className='h-100'>
-            <Col
-                className='py-2 px-1 p-lg-2'
+        <Container className='h-100'>
+            <Row className='d-sm-block d-md-none'>
+                <FollowingProfiles mobile />
+            </Row>
+            <Row
+                className='py-2 px-1'
                 lg={8}
             >
-                <FollowingProfiles mobile />
-                <i
-                    className={`fa-solid fa-magnifying-glass ${styles.SearchIcon}`}
-                />
                 <Form
                     className={styles.SearchBar}
                     onSubmit={(event) => event.preventDefault()}
@@ -66,48 +66,56 @@ function PostsPage({ message, filter = '' }) {
                         placeholder='Search. . .'
                     />
                 </Form>
-
-                {hasLoaded ? (
-                    <>
-                        {posts.results.length ? (
-                            <InfiniteScroll
-                                children={posts.results.map((post) => (
-                                    <Post
-                                        feed_list={true}
-                                        key={post.id}
-                                        {...post}
-                                        setPosts={setPosts}
-                                    />
-                                ))}
-                                dataLength={posts.results.length}
-                                loader={<Asset spinner />}
-                                hasMore={!!posts.next}
-                                next={() => fetchMoreData(posts, setPosts)}
-                            />
-                        ) : (
-                            <Container
-                                className={`${appStyles.Content} text-center`}
-                            >
-                                <Asset
-                                    src={NoResults}
-                                    message={message}
+            </Row>
+            <Row>
+                <Col
+                    sm={12}
+                    md={9}
+                    className=''
+                >
+                    {hasLoaded ? (
+                        <>
+                            {posts.results.length ? (
+                                <InfiniteScroll
+                                    children={posts.results.map((post) => (
+                                        <Post
+                                            feed_list
+                                            key={post.id}
+                                            {...post}
+                                            setPosts={setPosts}
+                                        />
+                                    ))}
+                                    dataLength={posts.results.length}
+                                    loader={<Asset spinner />}
+                                    hasMore={!!posts.next}
+                                    next={() => fetchMoreData(posts, setPosts)}
                                 />
-                            </Container>
-                        )}
-                    </>
-                ) : (
-                    <Container className={appStyles.Content}>
-                        <Asset spinner />
-                    </Container>
-                )}
-            </Col>
-            <Col
-                md={4}
-                className='d-none d-lg-block p-0 p-lg-2'
-            >
-                <FollowingProfiles />
-            </Col>
-        </Row>
+                            ) : (
+                                <Container
+                                    className={`${appStyles.Content} text-center`}
+                                >
+                                    <Asset
+                                        src={NoResults}
+                                        message={message}
+                                    />
+                                </Container>
+                            )}
+                        </>
+                    ) : (
+                        <Container className={appStyles.Content}>
+                            <Asset spinner />
+                        </Container>
+                    )}
+                </Col>
+                <Col
+                    md={3}
+                    className='d-none d-md-block'
+                >
+                    <PostInteractions />
+                    <FollowingProfiles />
+                </Col>
+            </Row>
+        </Container>
     );
 }
 

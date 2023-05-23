@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import { useParams } from 'react-router';
 import appStyles from '../../App.module.css';
 import { axiosReq } from '../../api/axiosDefaults';
+import PostInteractions from '../../components/PostInteractions';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Comment from '../comments/Comment';
 import CommentCreateForm from '../comments/CommentCreateForm';
@@ -78,9 +79,10 @@ function PostPage() {
                 </Container>
             </Col>
             <Col
-                lg={4}
-                className='d-none d-lg-block p-0 p-lg-2'
+                md={3}
+                className='d-none d-md-block p-0 p-lg-2'
             >
+                <PostInteractions />
                 <FollowingProfiles />
             </Col>
         </Row>

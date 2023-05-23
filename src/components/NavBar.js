@@ -12,6 +12,7 @@ import btnStyles from '../styles/Button.module.css';
 import styles from '../styles/NavBar.module.css';
 
 import Avatar from './Avatar';
+import PostInteractions from './PostInteractions';
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
@@ -41,6 +42,7 @@ const NavBar = () => {
 
     const loggedInIcons = (
         <>
+            <PostInteractions mobile />
             <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.Active}

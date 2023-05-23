@@ -13,6 +13,7 @@ import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import NoResults from '../../assets/nothing-found.png';
 import { ProfileEditDropdown } from '../../components/MoreDropdown';
+import PostInteractions from '../../components/PostInteractions';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import {
     useProfileData,
@@ -144,7 +145,6 @@ function ProfilePage() {
                 </Col>
             </Row>
             <Row>
-                {' '}
                 {profile?.content && (
                     <Col className='text-center pb-3'>
                         <strong className={styles.Bio}>
@@ -182,30 +182,29 @@ function ProfilePage() {
     );
 
     return (
-        <Row>
-            <Col
-                className='py-2 p-0 p-lg-2'
-                lg={8}
-            >
-                <FollowingProfiles mobile />
-                <Container className={appStyles.Content}>
-                    {hasLoaded ? (
-                        <>
-                            {mainProfile}
-                            {mainProfilePosts}
-                        </>
-                    ) : (
-                        <Asset spinner />
-                    )}
-                </Container>
-            </Col>
-            <Col
-                lg={4}
-                className='d-none d-lg-block p-0 p-lg-2'
-            >
-                <FollowingProfiles />
-            </Col>
-        </Row>
+        <>
+            <Row>
+                <Col
+                    className='py-2 p-0 p-lg-2'
+                    lg={8}
+                >
+                    <FollowingProfiles mobile />
+                    <Container className={appStyles.Content}>
+                        {hasLoaded ? (
+                            <>
+                                {mainProfile}
+                                {mainProfilePosts}
+                            </>
+                        ) : (
+                            <Asset spinner />
+                        )}
+                    </Container>
+                </Col>
+                <Col>
+                    <PostInteractions />
+                </Col>
+            </Row>
+        </>
     );
 }
 

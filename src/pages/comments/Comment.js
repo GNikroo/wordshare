@@ -55,7 +55,6 @@ const Comment = (props) => {
                     </>
                 ) : (
                     <>
-                        {' '}
                         <Link to={`/profiles/${profile_id}`}>
                             <Avatar src={profile_image} />
                         </Link>

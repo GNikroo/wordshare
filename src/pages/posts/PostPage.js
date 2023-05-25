@@ -79,8 +79,8 @@ function PostPage() {
                 </Container>
             </Col>
             <Col
-                md={3}
-                className='d-none d-md-block p-0 p-lg-2'
+                md={4}
+                className='d-none d-lg-block p-0 p-lg-2'
             >
                 <PostInteractions />
                 <FollowingProfiles />

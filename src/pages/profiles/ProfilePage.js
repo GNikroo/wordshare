@@ -202,6 +202,7 @@ function ProfilePage() {
                 </Col>
                 <Col>
                     <PostInteractions />
+                    <FollowingProfiles />
                 </Col>
             </Row>
         </>

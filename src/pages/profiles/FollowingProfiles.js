@@ -13,8 +13,8 @@ const FollowingProfiles = ({ mobile }) => {
 
     return (
         <Container
-            className={`${appStyles.Content} ${styles.List} ${
-                mobile && 'd-lg-none text-center mb-3'
+            className={`${appStyles.Content} ${!mobile && `${styles.List}`} ${
+                mobile && `${styles.MobileList} d-lg-none text-center mb-3`
             } py-2`}
         >
             {followingProfiles.results?.length ? (

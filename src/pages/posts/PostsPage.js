@@ -70,8 +70,7 @@ function PostsPage({ message, filter = '' }) {
             <Row>
                 <Col
                     sm={12}
-                    md={9}
-                    className=''
+                    md={8}
                 >
                     {hasLoaded ? (
                         <>
@@ -108,8 +107,8 @@ function PostsPage({ message, filter = '' }) {
                     )}
                 </Col>
                 <Col
-                    md={3}
-                    className='d-none d-md-block'
+                    md={4}
+                    className='d-none d-md-block p-0 p-lg-2'
                 >
                     <PostInteractions />
                     <FollowingProfiles />

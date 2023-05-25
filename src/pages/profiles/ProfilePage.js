@@ -9,7 +9,7 @@ import btnStyles from '../../styles/Button.module.css';
 import styles from '../../styles/ProfilePage.module.css';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import NoResults from '../../assets/nothing-found.png';
 import { ProfileEditDropdown } from '../../components/MoreDropdown';
@@ -193,7 +193,9 @@ function ProfilePage() {
                         {hasLoaded ? (
                             <>
                                 {mainProfile}
-                                {mainProfilePosts}
+                                <Link to={`/posts/${id}`}>
+                                    {mainProfilePosts}
+                                </Link>
                             </>
                         ) : (
                             <Asset spinner />

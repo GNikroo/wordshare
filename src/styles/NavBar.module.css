@@ -53,5 +53,10 @@
 }
 
 .Flip {
+    display: block;
     transform: rotate(0.5turn);
+}
+
+.HideToggle {
+    display: none;
 }

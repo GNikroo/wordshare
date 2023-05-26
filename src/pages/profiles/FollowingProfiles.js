@@ -15,7 +15,7 @@ const FollowingProfiles = ({ mobile }) => {
         <Container
             className={`${appStyles.Content} ${!mobile && `${styles.List}`} ${
                 mobile && `${styles.MobileList} d-lg-none text-center mb-3`
-            } py-2`}
+            }`}
         >
             {followingProfiles.results?.length ? (
                 <>

@@ -17,7 +17,7 @@ const PostInteractions = (props) => {
                         activeClassName={styles.Active}
                         to='/commented'
                     >
-                        <i className='d-sm-block d-md-none p-2 fa-regular fa-comment-dots'></i>
+                        <i className='d-sm-block d-md-none p-2 fa-solid fa-comment-dots'></i>
                     </NavLink>
                     <NavLink
                         className={styles.NavLink}

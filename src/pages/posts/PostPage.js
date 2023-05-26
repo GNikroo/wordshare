@@ -40,11 +40,11 @@ function PostPage() {
 
     return (
         <Row className='h-100'>
+            <FollowingProfiles mobile />
             <Col
-                className='py-2 p-0 p-lg-2'
+                className='p-0 p-lg-2'
                 lg={8}
             >
-                <FollowingProfiles mobile />
                 <Post
                     {...post.results[0]}
                     setPosts={setPost}

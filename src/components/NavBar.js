@@ -44,13 +44,24 @@ const NavBar = () => {
         <>
             <PostInteractions mobile />
             <NavLink
+                exact
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+                to='/featured'
+            >
+                <i className='d-sm-block d-md-none fa-solid fa-star p-2'></i>
+                <span className='d-none d-md-block p-2 pl-4'>Featured</span>
+            </NavLink>
+            <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.Active}
                 to='/feed'
             >
-                <i
-                    className={`${styles.Flip} d-sm-block d-md-none p-2 fa-solid fa-arrow-up-short-wide`}
-                ></i>
+                <span className={styles.Flip}>
+                    <i
+                        className={`d-sm-block d-md-none p-2 fa-solid fa-arrow-up-short-wide`}
+                    ></i>
+                </span>
                 <span className='d-none d-md-block p-2'>Latest</span>
             </NavLink>
             <NavLink
@@ -116,11 +127,20 @@ const NavBar = () => {
                                 {currentUser && addPostIcon}
                             </span>
                             <Nav className={`${styles.Nav} float-right`}>
-                                <Navbar.Toggle
-                                    ref={ref}
-                                    onClick={() => setExpanded(!expanded)}
-                                    aria-controls='basic-navbar-nav'
-                                />
+                                {expanded ? (
+                                    <Navbar.Toggle
+                                        ref={ref}
+                                        onClick={() => setExpanded(!expanded)}
+                                        aria-controls='basic-navbar-nav'
+                                        className={styles.HideToggle}
+                                    />
+                                ) : (
+                                    <Navbar.Toggle
+                                        ref={ref}
+                                        onClick={() => setExpanded(!expanded)}
+                                        aria-controls='basic-navbar-nav'
+                                    />
+                                )}
                                 <Navbar.Collapse
                                     className={styles.Collapse}
                                     id='basic-navbar-nav'

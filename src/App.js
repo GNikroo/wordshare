@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 import { useCurrentUser } from './contexts/CurrentUserContext';
 import SignInForm from './pages/auth/SignInForm';
 import SignUpForm from './pages/auth/SignUpForm';
+import FeaturedPost from './pages/posts/FeaturedPost';
 import PostCreateForm from './pages/posts/PostCreateForm';
 import PostEditForm from './pages/posts/PostEditForm';
 import PostPage from './pages/posts/PostPage';
@@ -75,6 +76,11 @@ function App() {
                         exact
                         path='/posts/create'
                         render={() => <PostCreateForm />}
+                    />
+                    <Route
+                        exact
+                        path='/featured/'
+                        render={() => <FeaturedPost filter='featured=true' />}
                     />
                     <Route
                         exact

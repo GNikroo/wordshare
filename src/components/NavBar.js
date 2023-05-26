@@ -44,15 +44,6 @@ const NavBar = () => {
         <>
             <PostInteractions mobile />
             <NavLink
-                exact
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-                to='/featured'
-            >
-                <i className='d-sm-block d-md-none fa-solid fa-star p-2'></i>
-                <span className='d-none d-md-block p-2 pl-4'>Featured</span>
-            </NavLink>
-            <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.Active}
                 to='/feed'
@@ -63,6 +54,15 @@ const NavBar = () => {
                     ></i>
                 </span>
                 <span className='d-none d-md-block p-2'>Latest</span>
+            </NavLink>
+            <NavLink
+                exact
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+                to='/featured'
+            >
+                <i className='d-sm-block d-md-none fa-solid fa-star p-2'></i>
+                <span className='d-none d-md-block p-2'>Featured</span>
             </NavLink>
             <NavLink
                 className={styles.NavLink}

@@ -4,7 +4,7 @@ import { ListGroup } from 'react-bootstrap';
 
 import styles from '../styles/PostInteractions.module.css';
 
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const PostInteractions = (props) => {
     const { mobile } = props;
@@ -31,7 +31,7 @@ const PostInteractions = (props) => {
                 <>
                     <ListGroup className='d-block'>
                         <ListGroup.Item className={styles.List}>
-                            <Link
+                            <NavLink
                                 className={styles.NavLink}
                                 activeClassName={styles.Active}
                                 to='/commented'
@@ -39,16 +39,16 @@ const PostInteractions = (props) => {
                                 <span className={styles.Comments}>
                                     your comments
                                 </span>
-                            </Link>
+                            </NavLink>
                         </ListGroup.Item>
                         <ListGroup.Item className={styles.List}>
-                            <Link
+                            <NavLink
                                 className={styles.NavLink}
                                 activeClassName={styles.Active}
                                 to='/liked'
                             >
                                 <span className={styles.Likes}>your likes</span>
-                            </Link>
+                            </NavLink>
                         </ListGroup.Item>
                     </ListGroup>
                 </>

@@ -47,6 +47,8 @@
     transform: scale(-1, 1);
 }
 
-.TextAlignLeft {
-    text-align: left;
+.Label {
+    font-size: 14px;
+    color: #915f78;
+    font-weight: 600;
 }

@@ -26,8 +26,9 @@ function PostCreateForm() {
         title: '',
         content: '',
         image: '',
+        labelContent: '',
     });
-    const { title, content, image } = postData;
+    const { title, content, image, labelContent } = postData;
 
     const imageInput = useRef(null);
     const history = useHistory();
@@ -68,9 +69,15 @@ function PostCreateForm() {
         }
 
         try {
-            const { data } = await axiosReq.post('/posts/', formData);
-            history.push(`/posts/${data.id}`);
-            console.log(data, 'data');
+            const response = await axiosReq.post('/posts/', formData);
+            const post = response.data;
+            const labelData = {
+                owner: post.owner,
+                post: post.id,
+                content: labelContent,
+            };
+            await axiosReq.post('/labels/', labelData);
+            history.push(`/posts/${post.id}`);
         } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
@@ -91,6 +98,23 @@ function PostCreateForm() {
                 />
             </Form.Group>
             {errors?.title?.map((message, idx) => (
+                <Alert
+                    variant='warning'
+                    key={idx}
+                >
+                    {message}
+                </Alert>
+            ))}
+            <Form.Group>
+                <Form.Label>Label</Form.Label>
+                <Form.Control
+                    type='text'
+                    name='labelContent'
+                    value={labelContent}
+                    onChange={handleChange}
+                />
+            </Form.Group>
+            {errors?.labelContent?.map((message, idx) => (
                 <Alert
                     variant='warning'
                     key={idx}

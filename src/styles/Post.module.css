@@ -46,9 +46,3 @@
 .Mirror {
     transform: scale(-1, 1);
 }
-
-.Label {
-    font-size: 14px;
-    color: #915f78;
-    font-weight: 600;
-}

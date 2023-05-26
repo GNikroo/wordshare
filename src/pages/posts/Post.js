@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import appStyles from '../../App.module.css';
@@ -30,25 +30,6 @@ const Post = (props) => {
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
     const history = useHistory();
-    const [labels, setLabels] = useState([]);
-
-    useEffect(() => {
-        const fetchLabel = async () => {
-            try {
-                const response = await axiosRes.get(`/labels/?post=${id}`);
-                const labels = response.data.results;
-                if (labels.length > 0) {
-                    setLabels(labels);
-                } else {
-                    setLabels([]);
-                }
-            } catch (err) {
-                console.log(err);
-            }
-        };
-
-        fetchLabel();
-    }, [id]);
 
     const handleEdit = () => {
         history.push(`/posts/${id}/edit`);
@@ -163,20 +144,6 @@ const Post = (props) => {
                         {imageLink}
                         <div className={appStyles.Truncated}>
                             {title && <Card.Title>{title}</Card.Title>}
-                            {labels.map((label) => {
-                                return (
-                                    <Link
-                                        key={label.id}
-                                        to={`/labels/${label.id}`}
-                                    >
-                                        <Card.Subtitle
-                                            className={`${styles.Label} py-1`}
-                                        >
-                                            {label.content}
-                                        </Card.Subtitle>
-                                    </Link>
-                                );
-                            })}
                             {content && (
                                 <Card.Text className={appStyles.Ellipses}>
                                     {content}
@@ -192,20 +159,6 @@ const Post = (props) => {
                                 {title}
                             </Card.Title>
                         )}
-                        {labels.map((label) => {
-                            return (
-                                <Link
-                                    key={label.id}
-                                    to={`/labels/${label.id}`}
-                                >
-                                    <Card.Subtitle
-                                        className={`${styles.Label} py-1`}
-                                    >
-                                        {label.content}
-                                    </Card.Subtitle>
-                                </Link>
-                            );
-                        })}
                         {content && <Card.Text>{content}</Card.Text>}
                     </>
                 )}

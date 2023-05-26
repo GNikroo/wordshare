@@ -64,20 +64,6 @@ function App() {
                     />
                     <Route
                         exact
-                        path='/labels/:id'
-                        render={({
-                            match: {
-                                params: { id },
-                            },
-                        }) => (
-                            <PostsPage
-                                message='No results found. Try a different search keyword or comment on a post.'
-                                filter={`label__id=${id}&ordering=-label__created_at&`}
-                            />
-                        )}
-                    />
-                    <Route
-                        exact
                         path='/signin'
                         render={() => <SignInForm />}
                     />

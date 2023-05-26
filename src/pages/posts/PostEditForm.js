@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { Alert, Button, Container, Figure, Form } from 'react-bootstrap';
 
-import appStyles from '../../App.module.css';
-import btnStyles from '../../styles/Button.module.css';
-
 import { useHistory, useParams } from 'react-router';
+import appStyles from '../../App.module.css';
 import { axiosReq } from '../../api/axiosDefaults';
 import upload from '../../assets/upload.png';
 import Asset from '../../components/Asset';
+import btnStyles from '../../styles/Button.module.css';
 
 function PostEditForm() {
     const [deleteImage, setDeleteImage] = useState();
@@ -18,29 +17,31 @@ function PostEditForm() {
         title: '',
         content: '',
         image: '',
+        owner: '',
     });
     const { title, content, image } = postData;
-
+    const { id } = useParams();
     const imageInput = useRef(null);
     const history = useHistory();
-    const { id } = useParams();
 
     useEffect(() => {
-        const handleMount = async () => {
+        const fetchPostData = async () => {
             try {
-                const { data } = await axiosReq.get(`/posts/${id}/`);
+                const [{ data }] = await axiosReq.get(`/posts/${id}`);
                 const { title, content, image, is_owner } = data;
 
-                is_owner
-                    ? setPostData({ title, content, image })
-                    : history.push('/');
+                if (is_owner) {
+                    setPostData({ title, content, image });
+                } else {
+                    history.push('/');
+                }
             } catch (err) {
                 console.log(err);
             }
         };
 
-        handleMount();
-    }, [history, id]);
+        fetchPostData();
+    }, [id, history]);
 
     const handleChange = (event) => {
         setPostData({
@@ -84,7 +85,6 @@ function PostEditForm() {
         } else if (imageInput?.current?.files[0]) {
             formData.append('image', imageInput.current.files[0]);
         }
-
         try {
             await axiosReq.put(`/posts/${id}/`, formData);
             history.push(`/posts/${id}`);
@@ -115,7 +115,6 @@ function PostEditForm() {
                     {message}
                 </Alert>
             ))}
-
             <Form.Group>
                 <Form.Label>Content</Form.Label>
                 <Form.Control

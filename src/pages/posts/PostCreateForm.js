@@ -26,9 +26,8 @@ function PostCreateForm() {
         title: '',
         content: '',
         image: '',
-        labelContent: '',
     });
-    const { title, content, image, labelContent } = postData;
+    const { title, content, image } = postData;
 
     const imageInput = useRef(null);
     const history = useHistory();
@@ -71,24 +70,6 @@ function PostCreateForm() {
         try {
             const response = await axiosReq.post('/posts/', formData);
             const post = response.data;
-            let labels = labelContent
-                .split(',')
-                .map((label) => label.trim())
-                .filter((label) => label !== '');
-            await Promise.all(
-                labels.map(async (label) => {
-                    const labelData = {
-                        owner: post.owner,
-                        post: post.id,
-                        content: label,
-                    };
-                    try {
-                        await axiosReq.post('/labels/', labelData);
-                    } catch (err) {
-                        console.log(err);
-                    }
-                })
-            );
             history.push(`/posts/${post.id}`);
         } catch (err) {
             console.log(err);
@@ -110,23 +91,6 @@ function PostCreateForm() {
                 />
             </Form.Group>
             {errors?.title?.map((message, idx) => (
-                <Alert
-                    variant='warning'
-                    key={idx}
-                >
-                    {message}
-                </Alert>
-            ))}
-            <Form.Group>
-                <Form.Label>Label</Form.Label>
-                <Form.Control
-                    type='text'
-                    name='labelContent'
-                    value={labelContent}
-                    onChange={handleChange}
-                />
-            </Form.Group>
-            {errors?.labelContent?.map((message, idx) => (
                 <Alert
                     variant='warning'
                     key={idx}

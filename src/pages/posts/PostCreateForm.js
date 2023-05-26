@@ -71,12 +71,24 @@ function PostCreateForm() {
         try {
             const response = await axiosReq.post('/posts/', formData);
             const post = response.data;
-            const labelData = {
-                owner: post.owner,
-                post: post.id,
-                content: labelContent,
-            };
-            await axiosReq.post('/labels/', labelData);
+            let labels = labelContent
+                .split(',')
+                .map((label) => label.trim())
+                .filter((label) => label !== '');
+            await Promise.all(
+                labels.map(async (label) => {
+                    const labelData = {
+                        owner: post.owner,
+                        post: post.id,
+                        content: label,
+                    };
+                    try {
+                        await axiosReq.post('/labels/', labelData);
+                    } catch (err) {
+                        console.log(err);
+                    }
+                })
+            );
             history.push(`/posts/${post.id}`);
         } catch (err) {
             console.log(err);

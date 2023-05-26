@@ -37,7 +37,6 @@ function PostPage() {
 
         handleMount();
     }, [id]);
-
     return (
         <Row className='h-100'>
             <FollowingProfiles mobile />
@@ -45,11 +44,14 @@ function PostPage() {
                 className='p-0 p-lg-2'
                 lg={8}
             >
-                <Post
-                    {...post.results[0]}
-                    setPosts={setPost}
-                    postPage
-                />
+                {post.results.map((post) => (
+                    <Post
+                        key={post.id}
+                        {...post}
+                        setPosts={setPost}
+                        postPage
+                    />
+                ))}
                 <Container className={appStyles.Content}>
                     {currentUser ? (
                         <CommentCreateForm

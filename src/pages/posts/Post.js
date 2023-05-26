@@ -165,14 +165,16 @@ const Post = (props) => {
                             {title && <Card.Title>{title}</Card.Title>}
                             {labels.map((label) => {
                                 return (
-                                    labels && (
+                                    <Link
+                                        key={label.id}
+                                        to={`/labels/${label.id}`}
+                                    >
                                         <Card.Subtitle
-                                            key={label.id}
                                             className={`${styles.Label} py-1`}
                                         >
                                             {label.content}
                                         </Card.Subtitle>
-                                    )
+                                    </Link>
                                 );
                             })}
                             {content && (
@@ -192,18 +194,16 @@ const Post = (props) => {
                         )}
                         {labels.map((label) => {
                             return (
-                                labels && (
-                                    <Link
-                                        key={label.id}
-                                        to={`/labels/${label.id}`}
+                                <Link
+                                    key={label.id}
+                                    to={`/labels/${label.id}`}
+                                >
+                                    <Card.Subtitle
+                                        className={`${styles.Label} py-1`}
                                     >
-                                        <Card.Subtitle
-                                            className={`${styles.Label} py-1`}
-                                        >
-                                            {label.content}
-                                        </Card.Subtitle>
-                                    </Link>
-                                )
+                                        {label.content}
+                                    </Card.Subtitle>
+                                </Link>
                             );
                         })}
                         {content && <Card.Text>{content}</Card.Text>}

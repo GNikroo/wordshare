@@ -53,8 +53,10 @@ const FeaturedPost = () => {
                 className='py-2 px-1'
                 lg={8}
             >
-                <Col                    sm={12}
-                    md={8}>
+                <Col
+                    sm={12}
+                    md={8}
+                >
                     <Card className={`${styles.Post} align-items-center mx-2`}>
                         <Card.Body className={`${styles.CardBodyTop} p-0`}>
                             <Media className='align-items-baseline'>
@@ -94,8 +96,10 @@ const FeaturedPost = () => {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col                    md={4}
-                    className='d-none d-md-block p-0 p-lg-2'>
+                <Col
+                    md={4}
+                    className='d-none d-md-block p-0 p-lg-2'
+                >
                     <PostInteractions />
                     <FollowingProfiles />
                 </Col>

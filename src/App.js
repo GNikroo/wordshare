@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import styles from './App.module.css';
 import './api/axiosDefaults';
 import NavBar from './components/NavBar';
+import NotFound from './components/NotFound';
 import { useCurrentUser } from './contexts/CurrentUserContext';
 import SignInForm from './pages/auth/SignInForm';
 import SignUpForm from './pages/auth/SignUpForm';
@@ -112,11 +113,7 @@ function App() {
                         path='/profiles/:id/edit'
                         render={() => <ProfileEditForm />}
                     />
-                    <Route
-                        render={() => (
-                            <p>The page you're looking for doesn't exist!</p>
-                        )}
-                    />
+                    <Route render={() => <NotFound />} />
                 </Switch>
             </Container>
         </div>

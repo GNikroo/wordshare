@@ -1,0 +1,19 @@
+.NoResultsContainer {
+    height: auto;
+    width: 20rem;
+    margin: auto;
+    background-color: #915f78;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.NoResults {
+    display: inline;
+    text-align: center;
+    /* margin: 0; */
+    font-size: 20px;
+    font-weight: 600;
+    color: #eebba0;
+    background-color: transparent;
+    border: none;
+}

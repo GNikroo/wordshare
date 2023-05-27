@@ -36,7 +36,7 @@ function PostPage() {
         handleMount();
     }, [id]);
     return (
-        <Row className='h-100'>
+        <Row className='h-100 d-block'>
             <FollowingProfiles />
             {post.results.map((post) => (
                 <Post

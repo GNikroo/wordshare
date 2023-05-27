@@ -11,7 +11,7 @@
 }
 
 .Main {
-    padding-top: 81px;
+    padding-top: 103px;
 }
 
 a {
@@ -51,4 +51,8 @@ a:hover {
     font-size: 12px;
     font-weight: bold !important;
     color: #e88c7d !important;
+}
+
+.Container {
+    margin-top: 2rem;
 }

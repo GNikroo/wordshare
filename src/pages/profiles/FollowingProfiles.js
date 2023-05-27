@@ -12,7 +12,7 @@ const FollowingProfiles = () => {
 
     return (
         <Container
-            className={`${appStyles.Content} ${styles.List} d-lg-none text-center mb-3`}
+            className={`${appStyles.Content} ${styles.List} text-center mb-3`}
         >
             {followingProfiles.results?.length ? (
                 <>

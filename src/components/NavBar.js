@@ -46,14 +46,12 @@ const NavBar = () => {
             <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.Active}
-                to='/feed'
+                to='/following'
             >
-                <span className={styles.Flip}>
-                    <i
-                        className={`d-sm-block d-md-none p-2 fa-solid fa-arrow-up-short-wide`}
-                    ></i>
-                </span>
-                <span className='d-none d-md-block p-2'>Latest</span>
+                <i
+                    className={`d-sm-block d-md-none p-2 fa-solid fa-people-group`}
+                ></i>
+                <span className='d-none d-md-block p-2'>Following</span>
             </NavLink>
             <NavLink
                 exact
@@ -153,7 +151,7 @@ const NavBar = () => {
                                     >
                                         <i className='d-sm-block d-md-none fas fa-home p-2'></i>
                                         <span className='d-none d-md-block p-2 pl-4'>
-                                            Home
+                                            Feed
                                         </span>
                                     </NavLink>
                                     {currentUser

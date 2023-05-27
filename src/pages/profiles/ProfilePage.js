@@ -17,7 +17,6 @@ import { Link, useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import NoResults from '../../assets/nothing-found.png';
 import { ProfileEditDropdown } from '../../components/MoreDropdown';
-import PostInteractions from '../../components/PostInteractions';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import {
     useProfileData,
@@ -188,28 +187,17 @@ function ProfilePage() {
     return (
         <>
             <Row>
-                <Col
-                    className='py-2 p-0 p-lg-2'
-                    lg={8}
-                >
-                    <FollowingProfiles mobile />
-                    <Container className={appStyles.Content}>
-                        {hasLoaded ? (
-                            <>
-                                {mainProfile}
-                                <Link to={`/posts/${id}`}>
-                                    {mainProfilePosts}
-                                </Link>
-                            </>
-                        ) : (
-                            <Asset spinner />
-                        )}
-                    </Container>
-                </Col>
-                <Col>
-                    <PostInteractions />
-                    <FollowingProfiles />
-                </Col>
+                <FollowingProfiles />
+                <Container className={appStyles.Content}>
+                    {hasLoaded ? (
+                        <>
+                            {mainProfile}
+                            <Link to={`/posts/${id}`}>{mainProfilePosts}</Link>
+                        </>
+                    ) : (
+                        <Asset spinner />
+                    )}
+                </Container>
             </Row>
         </>
     );

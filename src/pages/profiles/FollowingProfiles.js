@@ -7,37 +7,25 @@ import { useProfileData } from '../../contexts/ProfileDataContext';
 import styles from '../../styles/FollowingProfiles.module.css';
 import Profile from './Profile';
 
-const FollowingProfiles = ({ mobile }) => {
+const FollowingProfiles = () => {
     const { followingProfiles } = useProfileData();
 
     return (
         <Container
-            className={`${appStyles.Content} ${!mobile && `${styles.List}`} ${
-                mobile && `${styles.MobileList} d-lg-none text-center mb-3`
-            }`}
+            className={`${appStyles.Content} ${styles.List} d-lg-none text-center mb-3`}
         >
             {followingProfiles.results?.length ? (
                 <>
-                    {mobile ? (
-                        <div className='d-flex justify-content-around'>
-                            {followingProfiles.results
-                                .slice(0, 5)
-                                .map((profile) => (
-                                    <Profile
-                                        key={profile.id}
-                                        profile={profile}
-                                        mobile
-                                    />
-                                ))}
-                        </div>
-                    ) : (
-                        followingProfiles.results.map((profile) => (
-                            <Profile
-                                key={profile.id}
-                                profile={profile}
-                            />
-                        ))
-                    )}
+                    <div className='d-flex justify-content-around'>
+                        {followingProfiles.results
+                            .slice(0, 5)
+                            .map((profile) => (
+                                <Profile
+                                    key={profile.id}
+                                    profile={profile}
+                                />
+                            ))}
+                    </div>
                 </>
             ) : (
                 <div className={`${appStyles.EmptyFollowing} `}>

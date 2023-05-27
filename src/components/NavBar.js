@@ -30,7 +30,7 @@ const NavBar = () => {
             activeClassName={styles.AddPostActive}
             to='/posts/create'
         >
-            <i className='d-inline p-1 fas fa-plus-square'></i>
+            <i className='d-sm-block d-md-none p-1 fas fa-plus-square'></i>
             <span className='d-none d-md-block pr-4'>add post</span>
         </NavLink>
     );
@@ -47,16 +47,15 @@ const NavBar = () => {
 
     const loggedInIcons = (
         <>
-            <PostInteractions mobile />
             <NavLink
                 className={styles.NavLink}
                 activeClassName={styles.Active}
                 to='/following'
             >
                 <i
-                    className={`d-sm-block d-md-none p-2 fa-solid fa-people-group`}
+                    className={`d-md-block d-lg-none p-2 fa-solid fa-people-group`}
                 ></i>
-                <span className='d-none d-md-block p-2'>Following</span>
+                <span className='d-none d-lg-block p-2'>following</span>
             </NavLink>
             <NavLink
                 exact
@@ -64,16 +63,17 @@ const NavBar = () => {
                 activeClassName={styles.Active}
                 to='/featured'
             >
-                <i className='d-sm-block d-md-none fa-solid fa-star p-2'></i>
-                <span className='d-none d-md-block p-2'>Featured</span>
+                <i className='d-md-block d-lg-none fa-solid fa-star p-2'></i>
+                <span className='d-none d-lg-block p-2'>featured</span>
             </NavLink>
+            <PostInteractions />
             <NavLink
                 className={styles.NavLink}
                 to='/'
                 onClick={handleSignOut}
             >
                 <i className='d-sm-block d-md-none p-2 fas fa-sign-out-alt'></i>
-                <span className='d-none d-md-block p-2'>Sign out</span>
+                <span className='d-none d-md-block p-2'>sign out</span>
             </NavLink>
             <NavLink
                 className={styles.NavLink}
@@ -90,16 +90,16 @@ const NavBar = () => {
                 activeClassName={styles.Active}
                 to='/signin'
             >
-                <i className='d-sm-block d-md-none fas fa-sign-in-alt p-2'></i>
-                <span className='d-none d-md-block p-2'>Sign in</span>
+                <i className='d-md-block d-lg-none fas fa-sign-in-alt p-2'></i>
+                <span className='d-none d-lg-block p-2'>sign in</span>
             </NavLink>
             <NavLink
                 to='/signup'
                 className={styles.NavLink}
                 activeClassName={styles.Active}
             >
-                <i className='d-sm-block d-md-none fas fa-user-plus p-2'></i>
-                <span className='d-none d-md-block p-2'>Sign up</span>
+                <i className='d-md-block d-lg-none fas fa-user-plus p-2'></i>
+                <span className='d-none d-lg-block p-2'>sign up</span>
             </NavLink>
         </>
     );
@@ -154,9 +154,9 @@ const NavBar = () => {
                                         activeClassName={styles.Active}
                                         to='/'
                                     >
-                                        <i className='d-sm-block d-md-none fas fa-home p-2'></i>
-                                        <span className='d-none d-md-block p-2 pl-4'>
-                                            Feed
+                                        <i className='d-md-block d-lg-none fas fa-home p-2'></i>
+                                        <span className='d-none d-lg-block p-2 pl-4'>
+                                            feed
                                         </span>
                                     </NavLink>
                                     {currentUser

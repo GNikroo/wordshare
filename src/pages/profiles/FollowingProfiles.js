@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
 import appStyles from '../../App.module.css';
 import AddFollower from '../../assets/add-friend.png';
 import Asset from '../../components/Asset';
@@ -41,15 +40,16 @@ const FollowingProfiles = ({ mobile }) => {
                     )}
                 </>
             ) : (
-                <div>
-                    <NavLink to={`/feed`}>
-                        <div className='d-sm-none d-md-block'>
-                            <Asset src={AddFollower} />
-                        </div>
-                        <span className={appStyles.ClickTap}>
-                            Click or tap here to find users to follow
-                        </span>
-                    </NavLink>
+                <div className={`${appStyles.EmptyFollowing} `}>
+                    <div className='d-sm-none d-md-block'>
+                        <Asset
+                            height={'4rem'}
+                            src={AddFollower}
+                        />
+                    </div>
+                    <span className={appStyles.ClickTap}>
+                        users you follow will show up here
+                    </span>
                 </div>
             )}
         </Container>

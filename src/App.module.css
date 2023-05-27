@@ -46,8 +46,9 @@ a:hover {
     -webkit-line-clamp: 5;
 }
 
-.ClickTap {
+.EmptyFollowing {
+    text-align: center;
+    font-size: 12px;
     font-weight: bold !important;
-    cursor: pointer;
     color: #e88c7d !important;
 }

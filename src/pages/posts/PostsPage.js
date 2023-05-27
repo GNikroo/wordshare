@@ -15,6 +15,7 @@ import styles from '../../styles/PostsPage.module.css';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import NoResults from '../../assets/nothing-found.png';
 import PostInteractions from '../../components/PostInteractions';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { fetchMoreData } from '../../utils/utils';
 import FollowingProfiles from '../profiles/FollowingProfiles';
 
@@ -22,6 +23,7 @@ function PostsPage({ message, filter = '' }) {
     const [posts, setPosts] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
+    const currentUser = useCurrentUser();
 
     const [query, setQuery] = useState('');
 
@@ -46,7 +48,7 @@ function PostsPage({ message, filter = '' }) {
         return () => {
             clearTimeout(timer);
         };
-    }, [filter, query, pathname]);
+    }, [filter, query, pathname, currentUser]);
 
     return (
         <Container className='h-100'>

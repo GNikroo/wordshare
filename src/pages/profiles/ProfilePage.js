@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
 
 import Asset from '../../components/Asset';
 
@@ -52,7 +56,7 @@ function ProfilePage() {
                 setProfilePosts(profilePosts);
                 setHasLoaded(true);
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
         fetchData();

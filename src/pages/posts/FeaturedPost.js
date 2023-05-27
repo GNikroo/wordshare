@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Col, Container, Media, Row } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Media from 'react-bootstrap/Media';
+import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 import Avatar from '../../components/Avatar';
@@ -20,7 +24,7 @@ const FeaturedPost = () => {
                     setFeaturedPost(featuredPost);
                 }
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
 

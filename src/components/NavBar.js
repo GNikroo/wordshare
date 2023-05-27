@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React from 'react';
-import { Container, Nav, Navbar, Row } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Row from 'react-bootstrap/Row';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/quill.png';
 import {
@@ -38,7 +41,7 @@ const NavBar = () => {
             setCurrentUser(null);
             removeTokenTimestamp();
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 

@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Alert, Button, Container, Figure, Form } from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Figure from 'react-bootstrap/Figure';
+import Form from 'react-bootstrap/Form';
 
 import { useHistory, useParams } from 'react-router';
 import appStyles from '../../App.module.css';
@@ -36,7 +40,7 @@ function PostEditForm() {
                     history.push('/');
                 }
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
 
@@ -80,7 +84,7 @@ function PostEditForm() {
             try {
                 await axiosReq.delete(`/posts/${id}/delete-image/`);
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         } else if (imageInput?.current?.files[0]) {
             formData.append('image', imageInput.current.files[0]);
@@ -89,7 +93,7 @@ function PostEditForm() {
             await axiosReq.put(`/posts/${id}/`, formData);
             history.push(`/posts/${id}`);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }

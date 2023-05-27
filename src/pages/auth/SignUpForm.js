@@ -5,15 +5,14 @@ import btnStyles from '../../styles/Button.module.css';
 import styles from '../../styles/SignInUpForm.module.css';
 
 import axios from 'axios';
-import {
-    Alert,
-    Button,
-    Card,
-    Col,
-    Container,
-    Form,
-    Row,
-} from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+
 import { useRedirect } from '../../hooks/useRedirect';
 
 const SignUpForm = () => {

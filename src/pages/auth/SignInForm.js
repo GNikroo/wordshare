@@ -1,7 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-import { Alert, Button, Card, Container, Form } from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 
 import { Link, useHistory } from 'react-router-dom';
 

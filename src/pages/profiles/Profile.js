@@ -8,9 +8,8 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { useSetProfileData } from '../../contexts/ProfileDataContext';
 import btnStyles from '../../styles/Button.module.css';
 import styles from '../../styles/Profile.module.css';
-
 const Profile = (props) => {
-    const { profile, mobile, imageSize = 45 } = props;
+    const { profile } = props;
     const { id, following_id, image, owner } = profile;
 
     const currentUser = useCurrentUser();
@@ -19,46 +18,30 @@ const Profile = (props) => {
     const { handleFollow, handleUnfollow } = useSetProfileData();
 
     return (
-        <div className={`d-flex align-items-center ${mobile && 'flex-column'}`}>
+        <div className='d-flex align-items-center flex-column'>
             <Row>
                 <Col>
-                    <div>
+                    <Link
+                        className='align-self-center'
+                        to={`/profiles/${id}`}
+                    >
+                        <Avatar
+                            src={image}
+                            height={45}
+                        />
+                    </Link>
+                </Col>
+                <Col className='p-0'>
+                    <div className={`mx-2 ${styles.DesktopProfile}`}>
                         <Link
-                            className='align-self-center'
+                            className='align-self-center text-left d-none d-lg-block'
                             to={`/profiles/${id}`}
                         >
-                            {mobile ? (
-                                <Avatar
-                                    src={image}
-                                    height={35}
-                                />
-                            ) : (
-                                <Avatar
-                                    src={image}
-                                    height={imageSize}
-                                />
-                            )}
+                            {owner}
                         </Link>
                     </div>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    {mobile ? (
-                        <div className={`mx-2 ${styles.MobileProfile}`}></div>
-                    ) : (
-                        <div className={`mx-2 ${styles.DesktopProfile}`}>
-                            <Link
-                                className='align-self-center'
-                                to={`/profiles/${id}`}
-                            >
-                                {owner}
-                            </Link>
-                        </div>
-                    )}
-                    <div className={`text-left ${!mobile && 'ml-auto'}`}>
-                        {!mobile &&
-                            currentUser &&
+                    <div className='text-left ml-auto d-none d-lg-block'>
+                        {currentUser &&
                             !is_owner &&
                             (following_id ? (
                                 <Button

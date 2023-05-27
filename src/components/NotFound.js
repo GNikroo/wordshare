@@ -14,7 +14,8 @@ const NotFound = () => {
                     <Card.Body className={`${styles.NoResults}`}>
                         <Asset
                             src={NoResults}
-                            message={`Looks like you're lost!\nClick here to go home.`}
+                            height={150}
+                            message={`Looks like you're lost!\nClick or tap here to go home.`}
                         />
                     </Card.Body>
                 </Link>

@@ -27,7 +27,7 @@ function PostEditForm() {
     useEffect(() => {
         const fetchPostData = async () => {
             try {
-                const [{ data }] = await axiosReq.get(`/posts/${id}`);
+                const { data } = await axiosReq.get(`/posts/${id}`);
                 const { title, content, image, is_owner } = data;
 
                 if (is_owner) {

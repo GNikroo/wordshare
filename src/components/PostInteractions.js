@@ -10,7 +10,7 @@ const PostInteractions = () => {
         <>
             <NavLink
                 className={navStyles.NavLink}
-                activeClassName={navStyles.Active}
+                activeClassName={styles.Active}
                 to='/commented'
             >
                 <i className='d-md-block d-lg-none p-2 fa-solid fa-comment-dots'></i>
@@ -20,7 +20,7 @@ const PostInteractions = () => {
             </NavLink>
             <NavLink
                 className={navStyles.NavLink}
-                activeClassName={navStyles.Active}
+                activeClassName={styles.Active}
                 to='/liked'
             >
                 <i className='d-md-block d-lg-none p-2 fas fa-heart'></i>

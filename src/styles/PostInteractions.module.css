@@ -15,6 +15,10 @@
     color: #d93e26;
 }
 
+.Active span {
+    color: #915f78;
+}
+
 .Users {
     color: #a68cb7;
 }

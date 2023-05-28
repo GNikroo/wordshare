@@ -13,7 +13,7 @@ import btnStyles from '../../styles/Button.module.css';
 import styles from '../../styles/ProfilePage.module.css';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import NoResults from '../../assets/nothing-found.png';
 import { ProfileEditDropdown } from '../../components/MoreDropdown';
@@ -168,6 +168,7 @@ function ProfilePage() {
                             key={post.id}
                             {...post}
                             setPosts={setProfilePosts}
+                            feed_list
                         />
                     ))}
                     dataLength={profilePosts.results.length}
@@ -176,10 +177,12 @@ function ProfilePage() {
                     next={() => fetchMoreData(profilePosts, setProfilePosts)}
                 />
             ) : (
-                <Asset
-                    src={NoResults}
-                    message={`No results found, ${profile?.owner} hasn't posted yet.`}
-                />
+                <span className='text-center'>
+                    <Asset
+                        src={NoResults}
+                        message={`No results found, ${profile?.owner} hasn't posted yet.`}
+                    />
+                </span>
             )}
         </>
     );
@@ -192,7 +195,7 @@ function ProfilePage() {
                     {hasLoaded ? (
                         <>
                             {mainProfile}
-                            <Link to={`/posts/${id}`}>{mainProfilePosts}</Link>
+                            {mainProfilePosts}
                         </>
                     ) : (
                         <Asset spinner />
